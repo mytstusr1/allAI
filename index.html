@@ -4786,7 +4786,12 @@ reviews = [
             });
         }
 
+        let loggedInEmail = null; // stored at login, used by vault check
+
         function showAuthedContent(user) {
+            // Store email globally for vault access check
+            loggedInEmail = (user.email || '').toLowerCase().trim();
+
             // Fade out and remove auth overlay
             const overlay = document.getElementById('auth-overlay');
             overlay.classList.add('fade-out');
@@ -4921,14 +4926,11 @@ reviews = [
 
         const VAULT_OWNER = 'mytstusr1@gmail.com';
 
-        async function openVault() {
-            // Check that the logged-in user is the vault owner
-            if (auth0Client) {
-                const user = await auth0Client.getUser();
-                if (!user || user.email !== VAULT_OWNER) {
-                    alert('⛔ Access denied. This vault is private.');
-                    return;
-                }
+        function openVault() {
+            // Synchronous email check using stored login email
+            if (loggedInEmail !== VAULT_OWNER.toLowerCase()) {
+                alert('⛔ Access denied. This vault is private.');
+                return;
             }
             document.getElementById('vault-overlay').classList.add('show');
             const hasVault = !!localStorage.getItem(VAULT_KEY);
