@@ -1654,6 +1654,17 @@ t.color(<span class="string">"purple"</span>)
                         </tbody>
                     </table>
 
+                    <div class="code-block">
+<span class="comment"># A number guessing game</span>
+<span class="keyword">import</span> random
+
+secret = random.randint(<span class="number">1</span>, <span class="number">10</span>)
+guess = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Guess a number 1-10: "</span>))
+<span class="keyword">if</span> guess == secret:
+    <span class="function">print</span>(<span class="string">"You got it!"</span>)
+<span class="keyword">else</span>: <span class="function">print</span>(f<span class="string">"Nope! It was {secret}"</span>)
+                    </div>
+
                     <div class="assessment-box">
                         <strong>🏆 Milestone:</strong>
                         <p>Build a number guessing game with loops and user input</p>
