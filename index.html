@@ -1670,6 +1670,8 @@
                 <span>🔐 Your Credentials</span>
                 <button class="lock-btn" onclick="vaultLock()">🔒 Lock</button>
             </div>
+            <!-- Add button at top -->
+            <button class="add-cred-btn" onclick="showAddCred()" style="margin-bottom:1rem;">+ Add Credential</button>
             <!-- Search bar -->
             <div style="position:relative; margin-bottom:1rem;">
                 <span style="position:absolute; left:0.85rem; top:50%; transform:translateY(-50%); font-size:0.95rem; pointer-events:none;">🔍</span>
@@ -1685,7 +1687,6 @@
             </div>
             <div id="cred-list"></div>
             <div id="no-results" style="display:none;text-align:center;color:#9ca3af;font-size:0.85rem;padding:1rem 0;">No credentials match your search</div>
-            <button class="add-cred-btn" onclick="showAddCred()">+ Add Credential</button>
         </div>
 
         <!-- Add/Edit form -->
