@@ -1841,7 +1841,7 @@
                         <div class="summary-card-left">
                             <span class="summary-emoji">🔐</span>
                             <div>
-                                <div class="summary-title">My Credentials</div>
+                                <div class="summary-title">Credentials</div>
                                 <div class="summary-subtitle">Private vault — password protected</div>
                             </div>
                         </div>
@@ -4919,7 +4919,17 @@ reviews = [
             return Uint8Array.from(atob(s), c => c.charCodeAt(0));
         }
 
-        function openVault() {
+        const VAULT_OWNER = 'mytstusr1@gmail.com';
+
+        async function openVault() {
+            // Check that the logged-in user is the vault owner
+            if (auth0Client) {
+                const user = await auth0Client.getUser();
+                if (!user || user.email !== VAULT_OWNER) {
+                    alert('⛔ Access denied. This vault is private.');
+                    return;
+                }
+            }
             document.getElementById('vault-overlay').classList.add('show');
             const hasVault = !!localStorage.getItem(VAULT_KEY);
             document.getElementById('vault-setup').style.display    = hasVault ? 'none'  : 'block';
