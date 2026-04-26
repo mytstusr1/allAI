@@ -202,6 +202,11 @@
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
 
+        .box-purple {
+            background: linear-gradient(135deg, #f3e8ff 0%, #ede9fe 100%);
+            color: #1e293b;
+        }
+
         .box-blue {
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: #1e293b;
@@ -1632,11 +1637,205 @@
                     </div>
                 </div>
 
+                <!-- AI/ML Learning Plan -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#1e293b,#4f46e5);" onclick="toggleCard(this)">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🗺️</span>
+                            <div>
+                                <div class="summary-title">My AI/ML Learning Plan</div>
+                                <div class="summary-subtitle">15 weeks · 1 hour daily · LLM apps</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron">▼</span>
+                    </div>
+                    <div class="summary-body">
+                        <p>Your personal roadmap from Python basics to building and deploying real LLM-powered apps — in 4 phases over 15 weeks.</p>
+                        <div class="summary-tags">
+                            <span class="tag" style="background:#eff6ff;color:#1e40af;">4 Phases</span>
+                            <span class="tag" style="background:#eff6ff;color:#1e40af;">15 Weeks</span>
+                            <span class="tag" style="background:#eff6ff;color:#1e40af;">LLMs & RAG</span>
+                        </div>
+                        <button class="summary-cta" style="color:#4f46e5;" onclick="switchTab('ai-ml-plan')">View Plan →</button>
+                    </div>
+                </div>
+
             </div><!-- end grid -->
 
 
         </div>
     </div><!-- end home section -->
+
+    <!-- AI/ML LEARNING PLAN SECTION -->
+    <div id="ai-ml-plan" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🗺️ My AI/ML Learning Plan</span>
+        </div>
+        <div class="container">
+            <h1>🗺️ Your AI/ML Learning Plan</h1>
+            <p style="color:#6b7280; margin-bottom:2rem;">Tailored for intermediate coders · Focus: Building LLM-powered apps · 1 hour daily</p>
+
+            <!-- Timeline Strip -->
+            <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-bottom:2.5rem;">
+                <div style="background:linear-gradient(135deg,#007AFF,#0056cc); border-radius:12px; padding:1rem; color:white; text-align:center;">
+                    <div style="font-weight:700; font-size:0.9rem;">Phase 1</div>
+                    <div style="font-size:0.75rem; opacity:0.9;">Weeks 1–3</div>
+                    <div style="font-size:0.75rem; opacity:0.85; margin-top:0.25rem;">Python for Data</div>
+                </div>
+                <div style="background:linear-gradient(135deg,#34C759,#1a7a35); border-radius:12px; padding:1rem; color:white; text-align:center;">
+                    <div style="font-weight:700; font-size:0.9rem;">Phase 2</div>
+                    <div style="font-size:0.75rem; opacity:0.9;">Weeks 4–6</div>
+                    <div style="font-size:0.75rem; opacity:0.85; margin-top:0.25rem;">ML Fundamentals</div>
+                </div>
+                <div style="background:linear-gradient(135deg,#AF52DE,#7c3aed); border-radius:12px; padding:1rem; color:white; text-align:center;">
+                    <div style="font-weight:700; font-size:0.9rem;">Phase 3</div>
+                    <div style="font-size:0.75rem; opacity:0.9;">Weeks 7–10</div>
+                    <div style="font-size:0.75rem; opacity:0.85; margin-top:0.25rem;">LLMs &amp; APIs</div>
+                </div>
+                <div style="background:linear-gradient(135deg,#FF9500,#c05e00); border-radius:12px; padding:1rem; color:white; text-align:center;">
+                    <div style="font-weight:700; font-size:0.9rem;">Phase 4</div>
+                    <div style="font-size:0.75rem; opacity:0.9;">Weeks 11–15</div>
+                    <div style="font-size:0.75rem; opacity:0.85; margin-top:0.25rem;">Build &amp; Deploy</div>
+                </div>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="module">
+                <div class="module-header blue">
+                    <div>🐍 Phase 1 — Python for Data &amp; Math Intuition</div>
+                    <div class="module-badge">Weeks 1–3</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-blue">
+                        <strong>🎯 Goal:</strong>
+                        <p>Build the data skills and mathematical intuition you need before touching ML. NumPy, Pandas, visualisation, and core math concepts — all visually.</p>
+                    </div>
+                    <table>
+                        <thead><tr><th>Week</th><th>Focus</th><th>What You'll Do</th><th>Resource</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>1</strong></td><td>NumPy &amp; Pandas Basics</td><td>Kaggle Pandas course, load &amp; clean a CSV</td><td><a href="https://www.kaggle.com/learn/pandas" target="_blank">kaggle.com/learn/pandas ↗</a></td></tr>
+                            <tr><td><strong>2</strong></td><td>Data Viz + Colab</td><td>Matplotlib, Seaborn, visualize Titanic dataset</td><td><a href="https://www.kaggle.com/learn/data-visualization" target="_blank">kaggle.com/learn/data-viz ↗</a></td></tr>
+                            <tr><td><strong>3</strong></td><td>Math Intuition</td><td>3Blue1Brown Linear Algebra (Ep 1–6), StatQuest stats</td><td><a href="https://www.youtube.com/@3blue1brown" target="_blank">youtube.com/@3blue1brown ↗</a></td></tr>
+                        </tbody>
+                    </table>
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Load, clean and visualize your first real dataset in Google Colab</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="module">
+                <div class="module-header green">
+                    <div>🤖 Phase 2 — ML Fundamentals</div>
+                    <div class="module-badge">Weeks 4–6</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-green">
+                        <strong>🎯 Goal:</strong>
+                        <p>Understand how machine learning actually works — from Decision Trees to XGBoost — and train your first real model.</p>
+                    </div>
+                    <table>
+                        <thead><tr><th>Week</th><th>Focus</th><th>What You'll Do</th><th>Resource</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>4</strong></td><td>Intro to ML + scikit-learn</td><td>Decision Trees, Random Forests, submit to Kaggle!</td><td><a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank">kaggle.com/learn/intro-to-ML ↗</a></td></tr>
+                            <tr><td><strong>5</strong></td><td>Intermediate ML</td><td>Pipelines, cross-validation, XGBoost</td><td><a href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank">kaggle.com/learn/intermediate-ML ↗</a></td></tr>
+                            <tr><td><strong>6</strong></td><td>Mini Project Week</td><td>Pick a dataset, train 3 models, compare, document</td><td><a href="https://www.kaggle.com/datasets" target="_blank">kaggle.com/datasets ↗</a></td></tr>
+                        </tbody>
+                    </table>
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Train your first ML model and submit an entry to a Kaggle competition</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="module">
+                <div class="module-header purple">
+                    <div>🧠 Phase 3 — LLMs &amp; APIs</div>
+                    <div class="module-badge">Weeks 7–10</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-purple" style="background:linear-gradient(135deg,#f3e8ff,#ede9fe);">
+                        <strong>🎯 Goal:</strong>
+                        <p>Build real applications with Large Language Models — from your first API call to prompt engineering, open models, and AI agents.</p>
+                    </div>
+                    <table>
+                        <thead><tr><th>Week</th><th>Focus</th><th>What You'll Do</th><th>Resource</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>7</strong></td><td>First LLM App</td><td>OpenAI API, CLI chatbot, streaming, token counting</td><td><a href="https://platform.openai.com/docs/quickstart" target="_blank">platform.openai.com/docs ↗</a></td></tr>
+                            <tr><td><strong>8</strong></td><td>Prompt Engineering</td><td>Zero-shot, chain-of-thought, system prompts, templates</td><td><a href="https://www.promptingguide.ai" target="_blank">promptingguide.ai ↗</a></td></tr>
+                            <tr><td><strong>9</strong></td><td>Hugging Face + Open Models</td><td>Transformers pipeline, embeddings, semantic search</td><td><a href="https://huggingface.co/learn/nlp-course" target="_blank">huggingface.co/learn ↗</a></td></tr>
+                            <tr><td><strong>10</strong></td><td>Function Calling + Agents</td><td>OpenAI tools, tool use, build a simple agent</td><td><a href="https://platform.openai.com/docs/guides/function-calling" target="_blank">openai.com/function-calling ↗</a></td></tr>
+                        </tbody>
+                    </table>
+                    <div class="assessment-box">
+                        <strong>🏆 Milestones:</strong>
+                        <p>Week 7: Working CLI chatbot · Week 9: Run an open-source model locally via Hugging Face</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="module">
+                <div class="module-header orange">
+                    <div>🚀 Phase 4 — Build &amp; Deploy Real Apps</div>
+                    <div class="module-badge">Weeks 11–15</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-orange">
+                        <strong>🎯 Goal:</strong>
+                        <p>Build and ship a real LLM-powered app — using LangChain, RAG, vector databases, and a proper UI. Deploy it live for the world to use.</p>
+                    </div>
+                    <table>
+                        <thead><tr><th>Week</th><th>Focus</th><th>What You'll Do</th><th>Resource</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>11</strong></td><td>LangChain Fundamentals</td><td>Chains, memory, agents — multi-turn chatbot</td><td><a href="https://python.langchain.com/docs/introduction/" target="_blank">python.langchain.com ↗</a></td></tr>
+                            <tr><td><strong>12</strong></td><td>RAG — Chat with Your Docs</td><td>Document loaders, chunking, Chroma vector store</td><td><a href="https://python.langchain.com/docs/concepts/rag/" target="_blank">LangChain RAG docs ↗</a></td></tr>
+                            <tr><td><strong>13</strong></td><td>Vector DBs + Retrieval</td><td>Pinecone, hybrid search, re-ranking</td><td><a href="https://pinecone.io/learn" target="_blank">pinecone.io/learn ↗</a></td></tr>
+                            <tr><td><strong>14</strong></td><td>Capstone App</td><td>LLM + RAG + Streamlit UI — full app</td><td><a href="https://streamlit.io" target="_blank">streamlit.io ↗</a></td></tr>
+                            <tr><td><strong>15</strong></td><td>Deploy &amp; Share 🎉</td><td>FastAPI wrapper, deploy to Railway/Render, share!</td><td><a href="https://railway.app" target="_blank">railway.app ↗</a></td></tr>
+                        </tbody>
+                    </table>
+                    <div class="assessment-box">
+                        <strong>🏆 Milestones:</strong>
+                        <p>Week 12: "Chat with a PDF" RAG app · Week 15: Live deployed AI app 🎉</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips -->
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:16px; padding:1.5rem; margin-top:2rem;">
+                <h3 style="margin-bottom:1rem;">💡 Tips to Stay on Track</h3>
+                <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:0.75rem;">
+                    <div style="display:flex; gap:0.5rem; font-size:0.88rem; color:#6b7280;"><span>⏰</span><span>Same time every day builds the habit — even 45 min counts</span></div>
+                    <div style="display:flex; gap:0.5rem; font-size:0.88rem; color:#6b7280;"><span>📓</span><span>Keep a learning journal — write one thing you learned each day</span></div>
+                    <div style="display:flex; gap:0.5rem; font-size:0.88rem; color:#6b7280;"><span>🔨</span><span>Build something every week, no matter how small</span></div>
+                    <div style="display:flex; gap:0.5rem; font-size:0.88rem; color:#6b7280;"><span>🔁</span><span>Stuck? Skip ahead and come back — momentum beats perfection</span></div>
+                    <div style="display:flex; gap:0.5rem; font-size:0.88rem; color:#6b7280;"><span>🎯</span><span>Friday is always project day — apply what you learned</span></div>
+                    <div style="display:flex; gap:0.5rem; font-size:0.88rem; color:#6b7280;"><span>🤝</span><span>Join <a href="https://discuss.huggingface.co" target="_blank" style="color:#4f46e5;">Hugging Face</a> or <a href="https://www.kaggle.com/discussions" target="_blank" style="color:#4f46e5;">Kaggle</a> community</span></div>
+                </div>
+            </div>
+
+            <!-- Milestones -->
+            <div style="background:white; border:1px solid #e2e8f0; border-radius:16px; padding:1.5rem; margin-top:1.5rem;">
+                <h3 style="margin-bottom:1rem;">🏆 Key Milestones</h3>
+                <div style="display:flex; flex-direction:column; gap:0;">
+                    <div style="display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;"><span style="background:#007AFF; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap;">Week 1</span><span>Load, clean and visualize your first real dataset</span></div>
+                    <div style="display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;"><span style="background:#34C759; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap;">Week 4</span><span>Train your first ML model and <a href="https://www.kaggle.com/competitions" target="_blank" style="color:#4f46e5;">submit to Kaggle</a></span></div>
+                    <div style="display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;"><span style="background:#AF52DE; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap;">Week 7</span><span>Build a working chatbot using the <a href="https://platform.openai.com/docs/quickstart" target="_blank" style="color:#4f46e5;">OpenAI API</a></span></div>
+                    <div style="display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;"><span style="background:#AF52DE; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap;">Week 9</span><span>Run an open-source model locally via <a href="https://huggingface.co" target="_blank" style="color:#4f46e5;">Hugging Face</a></span></div>
+                    <div style="display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0; border-bottom:1px solid #f3f4f6; font-size:0.88rem;"><span style="background:#FF9500; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap;">Week 12</span><span>Build a <a href="https://python.langchain.com/docs/concepts/rag/" target="_blank" style="color:#4f46e5;">"chat with your PDF" RAG app</a> from scratch</span></div>
+                    <div style="display:flex; align-items:center; gap:0.75rem; padding:0.6rem 0; font-size:0.88rem;"><span style="background:#FF9500; color:white; padding:0.2rem 0.6rem; border-radius:20px; font-size:0.7rem; font-weight:700; white-space:nowrap;">Week 15</span><span>Deploy a real AI-powered app live on <a href="https://railway.app" target="_blank" style="color:#4f46e5;">Railway</a> or <a href="https://render.com" target="_blank" style="color:#4f46e5;">Render</a> 🎉</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- end ai-ml-plan section -->
 
     <!-- Teacher's Guide Section -->
     <div id="teachers-guide" class="content-section">
