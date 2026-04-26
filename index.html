@@ -1642,6 +1642,70 @@
         <button class="signout-btn" onclick="auth0Logout()">Sign out</button>
     </div>
 
+    <!-- Credentials Vault Overlay -->
+    <div id="vault-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);z-index:9990;display:none;align-items:center;justify-content:center;padding:1rem;">
+
+        <!-- Step 1: Setup (first time) -->
+        <div class="vault-modal" id="vault-setup" style="display:none;background:white;border-radius:20px;padding:2rem;width:100%;max-width:420px;box-shadow:0 25px 60px rgba(0,0,0,0.4);">
+            <h2 style="font-size:1.3rem;margin-bottom:0.4rem;color:#1e293b;">🔐 Set Up Your Vault</h2>
+            <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1.25rem;">Choose a strong password. It's never stored — lose it and you lose access.</p>
+            <input type="password" class="vault-input" id="vault-pw-new" placeholder="New password…" />
+            <input type="password" class="vault-input" id="vault-pw-confirm" placeholder="Confirm password…" onkeydown="if(event.key==='Enter') vaultSetup()" />
+            <button class="vault-btn" onclick="vaultSetup()">Create Vault →</button>
+            <div class="vault-error" id="vault-setup-error">Passwords don't match</div>
+        </div>
+
+        <!-- Step 2: Unlock -->
+        <div class="vault-modal" id="vault-unlock" style="display:none;background:white;border-radius:20px;padding:2rem;width:100%;max-width:420px;box-shadow:0 25px 60px rgba(0,0,0,0.4);">
+            <h2 style="font-size:1.3rem;margin-bottom:0.4rem;color:#1e293b;">🔐 Credentials Vault</h2>
+            <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1.25rem;">Enter your vault password to unlock.</p>
+            <input type="password" class="vault-input" id="vault-pw-input" placeholder="Enter password…" onkeydown="if(event.key==='Enter') vaultUnlock()" />
+            <button class="vault-btn" onclick="vaultUnlock()">Unlock →</button>
+            <div class="vault-error" id="vault-unlock-error">Wrong password — try again</div>
+        </div>
+
+        <!-- Step 3: Vault contents -->
+        <div class="vault-modal" id="vault-contents" style="display:none;background:white;border-radius:20px;padding:2rem;width:100%;max-width:560px;max-height:80vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.4);">
+            <div class="vault-lock-bar">
+                <span>🔐 Your Credentials</span>
+                <button class="lock-btn" onclick="vaultLock()">🔒 Lock</button>
+            </div>
+            <div id="cred-list"></div>
+            <button class="add-cred-btn" onclick="showAddCred()">+ Add Credential</button>
+        </div>
+
+        <!-- Add/Edit form -->
+        <div class="vault-modal" id="vault-add-form" style="display:none;background:white;border-radius:20px;padding:2rem;width:100%;max-width:440px;max-height:85vh;overflow-y:auto;box-shadow:0 25px 60px rgba(0,0,0,0.4);">
+            <h2 id="add-form-title" style="font-size:1.2rem;margin-bottom:0.4rem;color:#1e293b;">➕ Add Credential</h2>
+            <p style="font-size:0.82rem;color:#6b7280;margin-bottom:1rem;">All data is AES-256 encrypted with your vault password before saving.</p>
+            <input type="text"     class="vault-input" id="cred-name"  placeholder="Name (e.g. GitHub Account)" />
+            <select class="vault-input" id="cred-type" style="cursor:pointer;color:#374151;">
+                <option value="">— Type (optional) —</option>
+                <option value="Okta Application">Okta Application</option>
+                <option value="Auth0">Auth0</option>
+                <option value="GitHub">GitHub</option>
+                <option value="Google Account">Google Account</option>
+                <option value="API Key">API Key</option>
+                <option value="Database">Database</option>
+                <option value="SSH Key">SSH Key</option>
+                <option value="AWS">AWS</option>
+                <option value="OpenAI">OpenAI</option>
+                <option value="Email">Email</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text"     class="vault-input" id="cred-user"  placeholder="Username / Email" />
+            <input type="text"     class="vault-input" id="cred-val"   placeholder="Password / API Key / Secret" />
+            <input type="text"     class="vault-input" id="cred-url"   placeholder="URL (optional)" />
+            <input type="text"     class="vault-input" id="cred-notes" placeholder="Notes (optional)" />
+            <input type="hidden" id="cred-edit-idx" value="-1" />
+            <button class="vault-btn" onclick="saveCred()" style="margin-bottom:0.5rem;">Save →</button>
+            <button style="width:100%;padding:0.7rem;background:none;border:1px solid #e2e8f0;border-radius:10px;cursor:pointer;color:#64748b;font-size:0.9rem;" onclick="showVaultContents()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Copy toast -->
+    <div class="copy-toast" id="copy-toast">📋 Copied!</div>
+
     <!-- Name Entry Splash Screen -->
     <div id="splash-overlay">
         <div class="splash-card">
@@ -4932,7 +4996,7 @@ reviews = [
                 alert('⛔ Access denied. This vault is private.');
                 return;
             }
-            document.getElementById('vault-overlay').classList.add('show');
+            const vo=document.getElementById('vault-overlay'); vo.style.display='flex';
             const hasVault = !!localStorage.getItem(VAULT_KEY);
             document.getElementById('vault-setup').style.display    = hasVault ? 'none'  : 'block';
             document.getElementById('vault-unlock').style.display   = hasVault ? 'block' : 'none';
@@ -4990,11 +5054,14 @@ reviews = [
             list.innerHTML = creds.map((c, i) => `
                 <div class="cred-card">
                     <div style="flex:1;min-width:0;">
-                        <div class="cred-name">${escHtml(c.name)}</div>
-                        ${c.user ? `<div class="cred-user">${escHtml(c.user)}</div>` : ''}
-                        <div class="cred-value" onclick="copyToClipboard('${escAttr(c.val)}')" title="Click to copy">${escHtml(c.val)}</div>
-                        ${c.url   ? `<div style="font-size:0.75rem;margin-top:0.25rem;"><a href="${escAttr(c.url)}" target="_blank" style="color:#4f46e5;">${escHtml(c.url)}</a></div>` : ''}
-                        ${c.notes ? `<div style="font-size:0.75rem;color:#9ca3af;margin-top:0.2rem;">${escHtml(c.notes)}</div>` : ''}
+                        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                            <div class="cred-name">${escHtml(c.name)}</div>
+                            ${c.type ? `<span style="background:#f5f3ff;color:#5b21b6;padding:0.15rem 0.5rem;border-radius:20px;font-size:0.72rem;font-weight:600;">${escHtml(c.type)}</span>` : ''}
+                        </div>
+                        ${c.user ? `<div class="cred-user">👤 ${escHtml(c.user)}</div>` : ''}
+                        <div class="cred-value" onclick="copyToClipboard('${escAttr(c.val)}')" title="Click to copy">🔑 ${escHtml(c.val)}</div>
+                        ${c.url   ? `<div style="font-size:0.75rem;margin-top:0.25rem;"><a href="${escAttr(c.url)}" target="_blank" style="color:#4f46e5;">🔗 ${escHtml(c.url)}</a></div>` : ''}
+                        ${c.notes ? `<div style="font-size:0.75rem;color:#9ca3af;margin-top:0.2rem;">📝 ${escHtml(c.notes)}</div>` : ''}
                     </div>
                     <div class="cred-actions">
                         <button class="cred-btn" onclick="editCred(${i})">✏️</button>
@@ -5011,6 +5078,7 @@ reviews = [
             document.getElementById('vault-add-form').style.display = 'block';
             document.getElementById('add-form-title').textContent = '➕ Add Credential';
             ['cred-name','cred-user','cred-val','cred-url','cred-notes'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('cred-type').value = '';
             document.getElementById('cred-edit-idx').value = '-1';
             setTimeout(() => document.getElementById('cred-name').focus(), 100);
         }
@@ -5022,6 +5090,7 @@ reviews = [
             document.getElementById('vault-add-form').style.display = 'block';
             document.getElementById('add-form-title').textContent = '✏️ Edit Credential';
             document.getElementById('cred-name').value  = c.name  || '';
+            document.getElementById('cred-type').value  = c.type  || '';
             document.getElementById('cred-user').value  = c.user  || '';
             document.getElementById('cred-val').value   = c.val   || '';
             document.getElementById('cred-url').value   = c.url   || '';
@@ -5036,6 +5105,7 @@ reviews = [
             const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
             const entry = {
                 name,
+                type:  document.getElementById('cred-type').value.trim(),
                 user:  document.getElementById('cred-user').value.trim(),
                 val,
                 url:   document.getElementById('cred-url').value.trim(),
@@ -5059,7 +5129,7 @@ reviews = [
 
         function vaultLock() {
             vaultKey = null;
-            document.getElementById('vault-overlay').classList.remove('show');
+            document.getElementById('vault-overlay').style.display='none';
         }
 
         function copyToClipboard(text) {
