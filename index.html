@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & ML for Kids — Complete 3-Year Teaching Curriculum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-13-from: #667eea;
+            --color-13-to: #764ba2;
+            --color-14-from: #f093fb;
+            --color-14-to: #f5576c;
+            --color-15-from: #4facfe;
+            --color-15-to: #00f2fe;
+            --bg-light: #f8fafc;
+            --card-white: #ffffff;
+            --text-dark: #1a1a2e;
+            --text-gray: #64748b;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER & NAV ===== */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            padding: 2rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-btn {
+            padding: 0.8rem 2rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* ===== STICKY NAV ===== */
+        nav {
+            position: sticky;
+            top: 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .nav-tab {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            color: var(--text-dark);
+        }
+
+        .nav-tab.active {
+            color: var(--text-dark);
+        }
+
+        .nav-tab.active[data-age="13"] {
+            border-bottom-color: var(--color-13-to);
+        }
+
+        .nav-tab.active[data-age="14"] {
+            border-bottom-color: var(--color-14-to);
+        }
+
+        .nav-tab.active[data-age="15"] {
+            border-bottom-color: var(--color-15-to);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== AGE BADGES ===== */
+        .age-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .age-badge-13 {
+            background: linear-gradient(135deg, var(--color-13-from), var(--color-13-to));
+        }
+
+        .age-badge-14 {
+            background: linear-gradient(135deg, var(--color-14-from), var(--color-14-to));
+        }
+
+        .age-badge-15 {
+            background: linear-gradient(135deg, var(--color-15-from), var(--color-15-to));
+        }
+
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-13-to);
+            margin-bottom: 2rem;
+        }
+
+        .section.age-14 .highlight-box {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));
+            border-left-color: var(--color-14-to);
+        }
+
+        .section.age-15 .highlight-box {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+            border-left-color: var(--color-15-to);
+        }
+
+        .highlight-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== MODULE CARDS ===== */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .module-card {
+            background: var(--card-white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+            position: relative;
+        }
+
+        .section.age-13 .module-card {
+            border-top-color: var(--color-13-to);
+        }
+
+        .section.age-14 .module-card {
+            border-top-color: var(--color-14-to);
+        }
+
+        .section.age-15 .module-card {
+            border-top-color: var(--color-15-to);
+        }
+
+        .module-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-8px);
+        }
+
+        .module-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .module-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-weeks {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .module-topics {
+            margin-bottom: 1rem;
+        }
+
+        .module-topics h4 {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .topics-list {
+            list-style: none;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .topics-list li {
+            margin-bottom: 0.3rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .topics-list li:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .module-activities {
+            margin-bottom: 1rem;
+        }
+
+        .module-activities h4 {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .activities-list {
+            list-style: none;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .activities-list li {
+            margin-bottom: 0.3rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .activities-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: var(--color-13-to);
+        }
+
+        .section.age-14 .activities-list li:before {
+            color: var(--color-14-to);
+        }
+
+        .section.age-15 .activities-list li:before {
+            color: var(--color-15-to);
+        }
+
+        .module-tools {
+            padding: 1rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .module-tools strong {
+            color: var(--text-dark);
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        .code-section {
+            margin: 3rem 0;
+        }
+
+        .code-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .code-blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .code-block {
+            background: #1a1a2e;
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .code-label {
+            color: #e2e8f0;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+        }
+
+        code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: block;
+            white-space: pre;
+        }
+
+        .code-keyword {
+            color: #10b981;
+        }
+
+        .code-string {
+            color: #f59e0b;
+        }
+
+        .code-comment {
+            color: #6b7280;
+        }
+
+        .code-function {
+            color: #60a5fa;
+        }
+
+        /* ===== TABLES ===== */
+        .table-section {
+            margin: 2.5rem 0;
+        }
+
+        .table-section h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: var(--card-white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        }
+
+        .section.age-14 thead {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));
+        }
+
+        .section.age-15 thead {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: var(--bg-light);
+        }
+
+        /* ===== ASSESSMENT BREAKDOWN ===== */
+        .assessment-section {
+            margin: 2.5rem 0;
+        }
+
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .assessment-item {
+            background: var(--card-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .assessment-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .assessment-bar {
+            height: 8px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .assessment-fill-13 {
+            background: linear-gradient(90deg, var(--color-13-from), var(--color-13-to));
+        }
+
+        .assessment-fill-14 {
+            background: linear-gradient(90deg, var(--color-14-from), var(--color-14-to));
+        }
+
+        .assessment-fill-15 {
+            background: linear-gradient(90deg, var(--color-15-from), var(--color-15-to));
+        }
+
+        .assessment-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .assessment-percent {
+            margin-top: 0.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* ===== JOURNEY TABLE ===== */
+        .journey-section {
+            margin-top: 4rem;
+            padding: 3rem 0;
+            border-top: 2px solid var(--bg-light);
+        }
+
+        .journey-table-wrapper {
+            overflow-x: auto;
+            background: var(--card-white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2a2a4e 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: #4facfe;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 0.7;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-13-from), var(--color-13-to));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-hover);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .modules-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .code-blocks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .hero-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            nav {
+                flex-direction: row;
+                overflow-x: auto;
+                justify-content: flex-start;
+            }
+
+            .nav-tab {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                white-space: nowrap;
+            }
+
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 1rem;
+                right: 1rem;
+                font-size: 1.2rem;
+            }
+
+            main {
+                padding: 2rem 0.5rem;
+            }
+
+            .module-card {
+                padding: 1.5rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-btn {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .modules-grid {
+                gap: 1rem;
+            }
+
+            .module-card {
+                padding: 1rem;
+            }
+
+            nav {
+                overflow-x: auto;
+            }
+
+            .nav-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            header {
+                padding: 1rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1>🤖 AI & ML for Kids</h1>
+        <p class="subtitle">A Complete 3-Year Teaching Curriculum for Ages 13–15</p>
+        <div class="hero-buttons">
+            <button class="hero-btn" onclick="scrollToSection('age-13')">Age 13</button>
+            <button class="hero-btn" onclick="scrollToSection('age-14')">Age 14</button>
+            <button class="hero-btn" onclick="scrollToSection('age-15')">Age 15</button>
+        </div>
+    </header>
+
+    <!-- STICKY NAVIGATION -->
+    <nav>
+        <button class="nav-tab active" data-age="13" onclick="switchTab('age-13')">📚 Age 13 — Discovery</button>
+        <button class="nav-tab" data-age="14" onclick="switchTab('age-14')">🔧 Age 14 — Building</button>
+        <button class="nav-tab" data-age="15" onclick="switchTab('age-15')">🚀 Age 15 — Research</button>
+    </nav>
+
+    <main>
+        <!-- ===== AGE 13 SECTION ===== -->
+        <section class="section age-13 active" id="age-13">
+            <div class="section-header">
+                <span class="age-badge age-badge-13">Age 13: Discovery & Exploration</span>
+                <h2 class="section-title">Foundation Year</h2>
+                <div class="section-stats">
+                    <div class="stat">
+                        <span class="stat-value">12 Weeks</span>
+                        <span class="stat-label">Duration</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">6 Modules</span>
+                        <span class="stat-label">Topics</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">No Coding</span>
+                        <span class="stat-label">Required</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>✨ What's Different at This Age</h3>
+                <p>Age 13 is about <strong>discovery and wonder</strong>. No coding knowledge required. We focus on understanding AI through interactive tools, hands-on exploration, and real-world examples. Students build confidence and develop a strong ethical foundation.</p>
+            </div>
+
+            <!-- MODULES GRID -->
+            <div class="modules-grid">
+                <!-- Module 1 -->
+                <div class="module-card">
+                    <div class="module-icon">🧠</div>
+                    <div class="module-name">What is AI?</div>
+                    <div class="module-weeks">Weeks 1–2 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>AI vs Human Intelligence</li>
+                            <li>Types of AI (Narrow vs General)</li>
+                            <li>Real-world examples</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Discussion: "Which tasks can AI do better?"</li>
+                            <li>Sort real-world examples (Siri, chess bots, self-driving cars)</li>
+                            <li>Reflect on AI in daily life</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Day of AI (dayofai.org)
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="module-card">
+                    <div class="module-icon">📖</div>
+                    <div class="module-name">How Machines Learn</div>
+                    <div class="module-weeks">Weeks 3–4 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Supervised Learning</li>
+                            <li>Unsupervised Learning</li>
+                            <li>Training Data & Overfitting</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Card sorting game</li>
+                            <li>Hands-on with Teachable Machine</li>
+                            <li>Train model & test accuracy</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> teachablemachine.withgoogle.com
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module-card">
+                    <div class="module-icon">👁️</div>
+                    <div class="module-name">Seeing, Hearing & Understanding</div>
+                    <div class="module-weeks">Weeks 5–6 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Computer Vision</li>
+                            <li>NLP & Chatbots</li>
+                            <li>ML for Kids platform</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Image classifier with ML for Kids</li>
+                            <li>Build simple chatbot in Scratch</li>
+                            <li>Mini-project: Choose one</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> ML for Kids, Scratch ML extension
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module-card">
+                    <div class="module-icon">⚖️</div>
+                    <div class="module-name">AI Ethics</div>
+                    <div class="module-weeks">Weeks 7–8 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Bias in AI</li>
+                            <li>Privacy & Security</li>
+                            <li>Jobs & Power</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Facial recognition bias case study</li>
+                            <li>Class debate: "AI helpful vs harmful"</li>
+                            <li>Moral Machine interactive tool</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Moral Machine, Gender Shades project
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module-card">
+                    <div class="module-icon">🛠️</div>
+                    <div class="module-name">Build Your Own AI Project</div>
+                    <div class="module-weeks">Weeks 9–10 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Options</h4>
+                        <ul class="topics-list">
+                            <li>Image Classifier</li>
+                            <li>Smart Chatbot</li>
+                            <li>Sound Recognizer</li>
+                            <li>Social Good proposal</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Process</h4>
+                        <ul class="activities-list">
+                            <li>Idea & Planning</li>
+                            <li>Data Collection</li>
+                            <li>Training & Testing</li>
+                            <li>Improving & Iteration</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Teachable Machine, ML for Kids, Scratch
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module-card">
+                    <div class="module-icon">🎤</div>
+                    <div class="module-name">Present & Reflect</div>
+                    <div class="module-weeks">Weeks 11–12 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Activities</h4>
+                        <ul class="topics-list">
+                            <li>Science Fair demo day</li>
+                            <li>Live Q&A with peers</li>
+                            <li>Reflection & discussion</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Assessment</h4>
+                        <ul class="activities-list">
+                            <li>Live demo + Q&A</li>
+                            <li>Video explanation</li>
+                            <li>Written reflection</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> All tools used throughout the year
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOLS TABLE -->
+            <div class="table-section">
+                <h3>📦 Tools & Resources</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Purpose</th>
+                                <th>Cost</th>
+                                <th>Module</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>AI4K12.org</strong></td>
+                                <td>AI Curriculum Framework</td>
+                                <td>Free</td>
+                                <td>All</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Day of AI</strong></td>
+                                <td>AI Introduction Lessons</td>
+                                <td>Free</td>
+                                <td>Module 1</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Teachable Machine</strong></td>
+                                <td>Train Models (No-code)</td>
+                                <td>Free</td>
+                                <td>M2, M5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ML for Kids</strong></td>
+                                <td>Visual ML Platform</td>
+                                <td>Free</td>
+                                <td>M3, M5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Scratch ML Extension</strong></td>
+                                <td>ML + Creative Coding</td>
+                                <td>Free</td>
+                                <td>M3, M5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Moral Machine</strong></td>
+                                <td>AI Ethics Simulation</td>
+                                <td>Free</td>
+                                <td>Module 4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Code.org/ai</strong></td>
+                                <td>AI Intro Lessons</td>
+                                <td>Free</td>
+                                <td>Module 1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ASSESSMENT BREAKDOWN -->
+            <div class="assessment-section">
+                <h3>📊 Assessment Breakdown</h3>
+                <div class="assessment-grid">
+                    <div class="assessment-item">
+                        <div class="assessment-name">M1: AI Tools List</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-13" style="width: 10%"></div>
+                        </div>
+                        <div class="assessment-percent">10%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M2: Model Accuracy Reflection</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-13" style="width: 15%"></div>
+                        </div>
+                        <div class="assessment-percent">15%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M3: Mini-Project</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-13" style="width: 20%"></div>
+                        </div>
+                        <div class="assessment-percent">20%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M4: Ethics Report</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-13" style="width: 20%"></div>
+                        </div>
+                        <div class="assessment-percent">20%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M5+6: Project + Presentation</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-13" style="width: 35%"></div>
+                        </div>
+                        <div class="assessment-percent">35%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== AGE 14 SECTION ===== -->
+        <section class="section age-14" id="age-14">
+            <div class="section-header">
+                <span class="age-badge age-badge-14">Age 14: Building & Understanding</span>
+                <h2 class="section-title">Python Year</h2>
+                <div class="section-stats">
+                    <div class="stat">
+                        <span class="stat-value">14 Weeks</span>
+                        <span class="stat-label">Duration</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">7 Modules</span>
+                        <span class="stat-label">Topics</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">Python</span>
+                        <span class="stat-label">Programming</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>✨ What's Different at This Age</h3>
+                <p>Age 14 bridges the gap between exploration and creation. Students learn Python programming in the context of machine learning. We focus on <strong>building real projects, understanding algorithms, and deepening ethical thinking</strong>. This is where students become creators, not just consumers, of AI.</p>
+            </div>
+
+            <!-- MODULES GRID -->
+            <div class="modules-grid">
+                <!-- Module 1 -->
+                <div class="module-card">
+                    <div class="module-icon">📊</div>
+                    <div class="module-name">AI Recap + Data Literacy</div>
+                    <div class="module-weeks">Weeks 1–2 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>AI refresher</li>
+                            <li>Where data comes from</li>
+                            <li>Data types & bias</li>
+                            <li>Data cleaning</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Class survey → analyze own data</li>
+                            <li>Spot the bias activity</li>
+                            <li>Find real dataset & identify biases</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Google Sheets, Kaggle, Our World in Data
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="module-card">
+                    <div class="module-icon">🐍</div>
+                    <div class="module-name">Python for AI</div>
+                    <div class="module-weeks">Weeks 3–5 (3 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Variables, lists, loops, functions</li>
+                            <li>Load CSV files</li>
+                            <li>Calculate statistics</li>
+                            <li>Data visualization with matplotlib</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Python basics in Colab</li>
+                            <li>Load real dataset</li>
+                            <li>Create 2+ meaningful charts</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Google Colab, Trinket.io
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module-card">
+                    <div class="module-icon">🤖</div>
+                    <div class="module-name">ML Algorithms</div>
+                    <div class="module-weeks">Weeks 6–8 (3 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Classification (spam detection)</li>
+                            <li>Regression (price prediction)</li>
+                            <li>Unsupervised (K-means)</li>
+                            <li>Reinforcement learning intro</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Build spam classifier</li>
+                            <li>Predict house prices</li>
+                            <li>Evaluate with accuracy report</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Google Colab, scikit-learn, ML Crash Course
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module-card">
+                    <div class="module-icon">🧠</div>
+                    <div class="module-name">Neural Networks</div>
+                    <div class="module-weeks">Weeks 9–10 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>What is a neural network?</li>
+                            <li>Deep learning concepts</li>
+                            <li>Image recognition</li>
+                            <li>Generative AI intro</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>TensorFlow Playground experiments</li>
+                            <li>Write explainer: "How ChatGPT works"</li>
+                            <li>Watch 3Blue1Brown videos</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> playground.tensorflow.org, fast.ai, 3Blue1Brown
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module-card">
+                    <div class="module-icon">⚖️</div>
+                    <div class="module-name">Advanced AI Ethics</div>
+                    <div class="module-weeks">Weeks 11–12 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>AI in hiring, policing, healthcare</li>
+                            <li>Legal responsibility</li>
+                            <li>Cross-cultural AI performance</li>
+                            <li>AI governance & policy</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Real-world case studies</li>
+                            <li>AI Ethics Committee simulation</li>
+                            <li>Write AI Policy Brief (group)</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> AI Now Institute, AlgorithmWatch
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module-card">
+                    <div class="module-icon">🏆</div>
+                    <div class="module-name">Capstone Project</div>
+                    <div class="module-weeks">Weeks 13 (1 week)</div>
+                    <div class="module-topics">
+                        <h4>Options</h4>
+                        <ul class="topics-list">
+                            <li>Environment (energy/recycling)</li>
+                            <li>Health (disease prediction)</li>
+                            <li>Education (smart tutor)</li>
+                            <li>Culture (music/art classifier)</li>
+                            <li>Community (traffic prediction)</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Process</h4>
+                        <ul class="activities-list">
+                            <li>Define problem</li>
+                            <li>Collect data</li>
+                            <li>Build & evaluate model</li>
+                            <li>Address ethics</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Google Colab, all ML tools
+                    </div>
+                </div>
+
+                <!-- Module 7 -->
+                <div class="module-card">
+                    <div class="module-icon">🎉</div>
+                    <div class="module-name">Demo Day & Future</div>
+                    <div class="module-weeks">Week 14 (1 week)</div>
+                    <div class="module-topics">
+                        <h4>Events</h4>
+                        <ul class="topics-list">
+                            <li>AI Expo to parents/classes</li>
+                            <li>Future of AI panel debate</li>
+                            <li>Personal reflection</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Deliverables</h4>
+                        <ul class="activities-list">
+                            <li>Live demo presentation</li>
+                            <li>Written or video reflection</li>
+                            <li>Participate in panel</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Presentation, video, or written
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE SECTION -->
+            <div class="code-section">
+                <h3>💻 Python Code Examples</h3>
+                <div class="code-blocks-grid">
+                    <div class="code-block">
+                        <div class="code-label">📈 Module 2: Data Visualization Example</div>
+                        <code><span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
+
+scores = [72, 85, 90, 60, 78, 95, 88]
+names = [<span class="code-string">"Ali"</span>, <span class="code-string">"Sam"</span>, <span class="code-string">"Jo"</span>, <span class="code-string">"Lee"</span>,
+         <span class="code-string">"Maya"</span>, <span class="code-string">"Priya"</span>, <span class="code-string">"Tom"</span>]
+
+plt.bar(names, scores, color=<span class="code-string">"steelblue"</span>)
+plt.title(<span class="code-string">"Class Test Scores"</span>)
+plt.ylabel(<span class="code-string">"Score"</span>)
+plt.show()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-label">🤖 Module 3: Decision Tree Classifier</div>
+                        <code><span class="code-keyword">from</span> sklearn.tree <span class="code-keyword">import</span> DecisionTreeClassifier
+
+<span class="code-comment"># Training data: [study_hours, sleep_hours]</span>
+X = [[2, 5], [8, 7], [1, 4], [7, 8], [3, 6], [9, 7]]
+y = [0, 1, 0, 1, 0, 1]  <span class="code-comment"># 0=fail, 1=pass</span>
+
+model = DecisionTreeClassifier()
+model.fit(X, y)
+
+<span class="code-comment"># Predict for new student: 5h study, 6h sleep</span>
+<span class="code-keyword">print</span>(model.predict([[5, 6]]))</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOLS TABLE -->
+            <div class="table-section">
+                <h3>📦 Tools & Resources</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Purpose</th>
+                                <th>Cost</th>
+                                <th>Module</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Google Colab</strong></td>
+                                <td>Free Jupyter Notebooks + GPU</td>
+                                <td>Free</td>
+                                <td>M2, M3, M4, M6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>scikit-learn</strong></td>
+                                <td>ML Algorithms Library</td>
+                                <td>Free</td>
+                                <td>M3, M6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TensorFlow Playground</strong></td>
+                                <td>Interactive Neural Network</td>
+                                <td>Free</td>
+                                <td>M4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>matplotlib/seaborn</strong></td>
+                                <td>Data Visualization</td>
+                                <td>Free</td>
+                                <td>M2, M3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kaggle</strong></td>
+                                <td>Datasets & Competitions</td>
+                                <td>Free</td>
+                                <td>M1, M3, M6</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AI Now Institute</strong></td>
+                                <td>AI Ethics Resources</td>
+                                <td>Free</td>
+                                <td>M5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>fast.ai</strong></td>
+                                <td>Deep Learning Course</td>
+                                <td>Free</td>
+                                <td>M4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ASSESSMENT BREAKDOWN -->
+            <div class="assessment-section">
+                <h3>📊 Assessment Breakdown</h3>
+                <div class="assessment-grid">
+                    <div class="assessment-item">
+                        <div class="assessment-name">M1: Data Bias Analysis</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-14" style="width: 10%"></div>
+                        </div>
+                        <div class="assessment-percent">10%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M2: Data Charts Script</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-14" style="width: 15%"></div>
+                        </div>
+                        <div class="assessment-percent">15%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M3: Classifier Build + Write-up</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-14" style="width: 20%"></div>
+                        </div>
+                        <div class="assessment-percent">20%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M4: Plain-Language Explainer</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-14" style="width: 10%"></div>
+                        </div>
+                        <div class="assessment-percent">10%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M5: AI Policy Brief (Group)</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-14" style="width: 20%"></div>
+                        </div>
+                        <div class="assessment-percent">20%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M6+7: Capstone + Expo</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-14" style="width: 25%"></div>
+                        </div>
+                        <div class="assessment-percent">25%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== AGE 15 SECTION ===== -->
+        <section class="section age-15" id="age-15">
+            <div class="section-header">
+                <span class="age-badge age-badge-15">Age 15: Research & Innovation</span>
+                <h2 class="section-title">Advanced Year</h2>
+                <div class="section-stats">
+                    <div class="stat">
+                        <span class="stat-value">16 Weeks</span>
+                        <span class="stat-label">Duration</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">7 Modules</span>
+                        <span class="stat-label">Topics</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">Deep Learning</span>
+                        <span class="stat-label">Focus</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>✨ What's Different at This Age</h3>
+                <p>Age 15 is about <strong>mastery, innovation, and independent research</strong>. Students build production-grade deep learning models, explore cutting-edge AI (LLMs, generative AI), analyze societal implications, and conduct original research projects. This is where students become researchers and thought leaders.</p>
+            </div>
+
+            <!-- MODULES GRID -->
+            <div class="modules-grid">
+                <!-- Module 1 -->
+                <div class="module-card">
+                    <div class="module-icon">📊</div>
+                    <div class="module-name">Advanced Data Science</div>
+                    <div class="module-weeks">Weeks 1–2 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>pandas & numpy mastery</li>
+                            <li>Exploratory Data Analysis (EDA)</li>
+                            <li>Data storytelling</li>
+                            <li>Real Kaggle datasets</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Complete EDA notebook</li>
+                            <li>Create 5+ visualizations</li>
+                            <li>Write data story</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Google Colab (GPU), pandas, numpy, seaborn
+                    </div>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="module-card">
+                    <div class="module-icon">⚙️</div>
+                    <div class="module-name">Advanced Python + ML Pipeline</div>
+                    <div class="module-weeks">Weeks 3–5 (3 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Feature engineering</li>
+                            <li>Model comparison (Random Forests, SVM, KNN)</li>
+                            <li>Hyperparameter tuning</li>
+                            <li>Confusion matrices & F1 scores</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Build complete ML pipeline</li>
+                            <li>Compare 3+ models</li>
+                            <li>Technical report with metrics</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Colab, scikit-learn, Kaggle Learn
+                    </div>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="module-card">
+                    <div class="module-icon">🧠</div>
+                    <div class="module-name">Deep Learning in Code</div>
+                    <div class="module-weeks">Weeks 6–8 (3 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>First neural network (MNIST)</li>
+                            <li>Overfitting & regularization</li>
+                            <li>Dropout & batch normalization</li>
+                            <li>Training curves & diagnostics</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Train MNIST classifier</li>
+                            <li>Deliberately overfit then fix</li>
+                            <li>Document architecture decisions</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Colab GPU, TensorFlow/Keras, fast.ai
+                    </div>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="module-card">
+                    <div class="module-icon">👁️</div>
+                    <div class="module-name">Computer Vision & NLP</div>
+                    <div class="module-weeks">Weeks 9–10 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>CNNs & Transfer Learning</li>
+                            <li>MobileNetV2 for mobile</li>
+                            <li>Sentiment analysis</li>
+                            <li>HuggingFace Transformers</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Build CV classifier</li>
+                            <li>NLP sentiment analyzer</li>
+                            <li>Deploy on mobile (optional)</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Colab GPU, TensorFlow, HuggingFace
+                    </div>
+                </div>
+
+                <!-- Module 5 -->
+                <div class="module-card">
+                    <div class="module-icon">✨</div>
+                    <div class="module-name">Generative AI & LLMs</div>
+                    <div class="module-weeks">Weeks 11–12 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>How LLMs & Transformers work</li>
+                            <li>Attention mechanism</li>
+                            <li>Prompt engineering</li>
+                            <li>Generative models (text, image, music)</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Critical analysis essay</li>
+                            <li>"Opportunity or Risk?" debate</li>
+                            <li>Explore HuggingFace generative models</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> HuggingFace Spaces, OpenAI API, 3Blue1Brown
+                    </div>
+                </div>
+
+                <!-- Module 6 -->
+                <div class="module-card">
+                    <div class="module-icon">🌍</div>
+                    <div class="module-name">AI Governance, Careers & Society</div>
+                    <div class="module-weeks">Weeks 13–14 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Topics</h4>
+                        <ul class="topics-list">
+                            <li>Global AI governance</li>
+                            <li>EU AI Act vs US vs China</li>
+                            <li>AI career paths</li>
+                            <li>Guest speaker sessions</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Activities</h4>
+                        <ul class="activities-list">
+                            <li>Research 6 AI career paths</li>
+                            <li>Guest speaker Q&A</li>
+                            <li>Personal career reflection</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Research, interviews, reflection
+                    </div>
+                </div>
+
+                <!-- Module 7 -->
+                <div class="module-card">
+                    <div class="module-icon">📜</div>
+                    <div class="module-name">Research Project</div>
+                    <div class="module-weeks">Weeks 15–16 (2 weeks)</div>
+                    <div class="module-topics">
+                        <h4>Project Ideas</h4>
+                        <ul class="topics-list">
+                            <li>Medical imaging (skin conditions)</li>
+                            <li>Plant disease classifier</li>
+                            <li>AI-generated vs human text detection</li>
+                            <li>Recycling classifier</li>
+                            <li>Mental health sentiment analysis</li>
+                            <li>Climate prediction (time series)</li>
+                        </ul>
+                    </div>
+                    <div class="module-activities">
+                        <h4>Deliverables</h4>
+                        <ul class="activities-list">
+                            <li>Research paper (8+ pages)</li>
+                            <li>Live presentation</li>
+                            <li>Q&A defense</li>
+                        </ul>
+                    </div>
+                    <div class="module-tools">
+                        <strong>Tools:</strong> Google Research, ArXiv.org, Papers With Code
+                    </div>
+                </div>
+            </div>
+
+            <!-- CODE SECTION -->
+            <div class="code-section">
+                <h3>💻 Python Code Examples</h3>
+                <div class="code-blocks-grid">
+                    <div class="code-block">
+                        <div class="code-label">📊 Module 1: EDA with pandas & seaborn</div>
+                        <code><span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">import</span> seaborn <span class="code-keyword">as</span> sns
+<span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
+
+df = pd.read_csv(<span class="code-string">"students.csv"</span>)
+<span class="code-keyword">print</span>(df.isnull().sum())
+
+sns.heatmap(df.corr(), annot=<span class="code-keyword">True</span>, cmap=<span class="code-string">"coolwarm"</span>)
+plt.title(<span class="code-string">"Feature Correlations"</span>)
+plt.show()
+
+df[<span class="code-string">"score"</span>].hist(bins=20, color=<span class="code-string">"steelblue"</span>)
+plt.title(<span class="code-string">"Score Distribution"</span>)
+plt.show()</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-label">⚙️ Module 2: ML Pipeline with GridSearch</div>
+                        <code><span class="code-keyword">from</span> sklearn.ensemble <span class="code-keyword">import</span> RandomForestClassifier
+<span class="code-keyword">from</span> sklearn.model_selection <span class="code-keyword">import</span> GridSearchCV
+<span class="code-keyword">from</span> sklearn.metrics <span class="code-keyword">import</span> classification_report
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2)
+
+param_grid = {<span class="code-string">"n_estimators"</span>: [50, 100, 200],
+              <span class="code-string">"max_depth"</span>: [3, 5, <span class="code-keyword">None</span>]}
+grid = GridSearchCV(RandomForestClassifier(), 
+                    param_grid, cv=5, scoring=<span class="code-string">"f1"</span>)
+grid.fit(X_train, y_train)
+<span class="code-keyword">print</span>(<span class="code-string">"Best:"</span>, grid.best_params_)
+<span class="code-keyword">print</span>(classification_report(y_test, 
+                             grid.predict(X_test)))</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-label">🧠 Module 3: Keras Neural Network (MNIST)</div>
+                        <code><span class="code-keyword">import</span> tensorflow <span class="code-keyword">as</span> tf
+<span class="code-keyword">from</span> tensorflow <span class="code-keyword">import</span> keras
+
+(X_train, y_train), (X_test, y_test) = keras.datasets.mnist.load_data()
+X_train, X_test = X_train / 255.0, X_test / 255.0
+
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation=<span class="code-string">"relu"</span>),
+    keras.layers.Dropout(0.2),
+    keras.layers.Dense(64, activation=<span class="code-string">"relu"</span>),
+    keras.layers.Dense(10, activation=<span class="code-string">"softmax"</span>)
+])
+model.compile(optimizer=<span class="code-string">"adam"</span>,
+              loss=<span class="code-string">"sparse_categorical_crossentropy"</span>,
+              metrics=[<span class="code-string">"accuracy"</span>])
+model.fit(X_train, y_train, epochs=10, validation_split=0.1)
+<span class="code-keyword">print</span>(<span class="code-string">f"Test: {model.evaluate(X_test, y_test)[1]:.2%}"</span>)</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-label">👁️ Module 4: Transfer Learning with MobileNetV2</div>
+                        <code><span class="code-keyword">from</span> tensorflow.keras.applications <span class="code-keyword">import</span> MobileNetV2
+<span class="code-keyword">from</span> tensorflow.keras <span class="code-keyword">import</span> layers, models
+
+base_model = MobileNetV2(weights=<span class="code-string">"imagenet"</span>, 
+                         include_top=<span class="code-keyword">False</span>,
+                         input_shape=(224, 224, 3))
+base_model.trainable = <span class="code-keyword">False</span>
+
+model = models.Sequential([
+    base_model,
+    layers.GlobalAveragePooling2D(),
+    layers.Dense(3, activation=<span class="code-string">"softmax"</span>)
+])
+model.compile(optimizer=<span class="code-string">"adam"</span>,
+              loss=<span class="code-string">"sparse_categorical_crossentropy"</span>,
+              metrics=[<span class="code-string">"accuracy"</span>])</code>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-label">✨ Module 4: NLP Sentiment with Transformers</div>
+                        <code><span class="code-keyword">from</span> transformers <span class="code-keyword">import</span> pipeline
+
+classifier = pipeline(<span class="code-string">"sentiment-analysis"</span>)
+reviews = [
+    <span class="code-string">"This movie was absolutely amazing!"</span>,
+    <span class="code-string">"Terrible film, total waste of time."</span>,
+    <span class="code-string">"It was okay, nothing special."</span>
+]
+
+<span class="code-keyword">for</span> review <span class="code-keyword">in</span> reviews:
+    result = classifier(review)[0]
+    <span class="code-keyword">print</span>(<span class="code-string">f"{result['label']} ({result['score']:.0%})"</span>)
+    <span class="code-keyword">print</span>(<span class="code-string">f"  → {review}"</span>)</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOLS TABLE -->
+            <div class="table-section">
+                <h3>📦 Tools & Resources</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Purpose</th>
+                                <th>Cost</th>
+                                <th>Module</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>pandas, numpy, seaborn</strong></td>
+                                <td>Data Analysis & Visualization</td>
+                                <td>Free</td>
+                                <td>M1, M2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>scikit-learn</strong></td>
+                                <td>ML Algorithms Pipeline</td>
+                                <td>Free</td>
+                                <td>M2, M3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TensorFlow/Keras</strong></td>
+                                <td>Deep Learning Framework</td>
+                                <td>Free</td>
+                                <td>M3, M4</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HuggingFace Transformers</strong></td>
+                                <td>NLP & Generative Models</td>
+                                <td>Free</td>
+                                <td>M4, M5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Google Colab GPU</strong></td>
+                                <td>GPU Computing (Free Tier)</td>
+                                <td>Free</td>
+                                <td>M1–M7</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Kaggle Datasets</strong></td>
+                                <td>Real-world Data</td>
+                                <td>Free</td>
+                                <td>M1, M2, M7</td>
+                            </tr>
+                            <tr>
+                                <td><strong>fast.ai</strong></td>
+                                <td>Deep Learning Course</td>
+                                <td>Free</td>
+                                <td>M3, M5</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Papers With Code</strong></td>
+                                <td>Research Papers + Code</td>
+                                <td>Free</td>
+                                <td>M7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ASSESSMENT BREAKDOWN -->
+            <div class="assessment-section">
+                <h3>📊 Assessment Breakdown</h3>
+                <div class="assessment-grid">
+                    <div class="assessment-item">
+                        <div class="assessment-name">M1: EDA Notebook + Data Story</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 10%"></div>
+                        </div>
+                        <div class="assessment-percent">10%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M2: 3-Model Comparison Report</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 15%"></div>
+                        </div>
+                        <div class="assessment-percent">15%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M3: Neural Net + Training Curves</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 15%"></div>
+                        </div>
+                        <div class="assessment-percent">15%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M4: Working Classifier + Write-up</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 15%"></div>
+                        </div>
+                        <div class="assessment-percent">15%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M5: Critical Analysis Essay</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 10%"></div>
+                        </div>
+                        <div class="assessment-percent">10%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M6: Career Reflection</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 5%"></div>
+                        </div>
+                        <div class="assessment-percent">5%</div>
+                    </div>
+                    <div class="assessment-item">
+                        <div class="assessment-name">M7: Research Paper + Presentation</div>
+                        <div class="assessment-bar">
+                            <div class="assessment-fill assessment-fill-15" style="width: 30%"></div>
+                        </div>
+                        <div class="assessment-percent">30%</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 3-YEAR JOURNEY ===== -->
+        <section class="journey-section">
+            <h2 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🚀 The 3-Year Journey</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">Age 13</th>
+                            <th style="background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));">Age 14</th>
+                            <th style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));">Age 15</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Focus</strong><br>Discovery & Wonder</td>
+                            <td><strong>Focus</strong><br>Building & Understanding</td>
+                            <td><strong>Focus</strong><br>Research & Innovation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Duration</strong><br>12 weeks</td>
+                            <td><strong>Duration</strong><br>14 weeks</td>
+                            <td><strong>Duration</strong><br>16 weeks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modules</strong><br>6 modules</td>
+                            <td><strong>Modules</strong><br>7 modules</td>
+                            <td><strong>Modules</strong><br>7 modules</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Level</strong><br>No-code required</td>
+                            <td><strong>Level</strong><br>Python intermediate</td>
+                            <td><strong>Level</strong><br>Deep learning advanced</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tools</strong><br>Teachable Machine, ML for Kids, Scratch</td>
+                            <td><strong>Tools</strong><br>Google Colab, scikit-learn, TensorFlow Playground</td>
+                            <td><strong>Tools</strong><br>Keras, HuggingFace, TensorFlow GPU</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Key Outcome</strong><br>First AI project + ethics report</td>
+                            <td><strong>Key Outcome</strong><br>Capstone project + policy brief</td>
+                            <td><strong>Key Outcome</strong><br>Research paper + career plan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ethics</strong><br>Foundational bias intro</td>
+                            <td><strong>Ethics</strong><br>Real-world governance</td>
+                            <td><strong>Ethics</strong><br>Research + policy analysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Student Role</strong><br>Explorer & creator</td>
+                            <td><strong>Student Role</strong><br>Developer & thinker</td>
+                            <td><strong>Student Role</strong><br>Researcher & leader</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>🎓 Built with ❤️ for educators and students everywhere</p>
+        <p style="font-size: 0.95rem; margin-top: 1rem;">A complete, free, open-source AI & ML curriculum for ages 13–15. <strong>No paywalls. No prerequisites. Just learning.</strong></p>
+        <p style="font-size: 0.85rem; margin-top: 1.5rem; opacity: 0.7;">View on <a href="https://github.com/mytstusr1/allAI" target="_blank">GitHub</a></p>
+    </footer>
+
+    <script>
+        // Tab switching
+        function switchTab(ageId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            
+            // Show selected section
+            document.getElementById(ageId).classList.add('active');
+            
+            // Update nav highlighting
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-age="${ageId.split('-')[1]}"]`).classList.add('active');
+            
+            // Smooth scroll to top of section
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll to section from hero buttons
+        function scrollToSection(sectionId) {
+            switchTab(sectionId);
+        }
+
+        // Back to top button visibility
+        window.addEventListener('scroll', () => {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize nav active state
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('[data-age="13"]').classList.add('active');
+        });
+
+        // Mobile-friendly nav touch handling
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchTab(`age-${tab.dataset.age}`);
+            });
+        });
+    </script>
+</body>
+</html>
