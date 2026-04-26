@@ -486,7 +486,36 @@
         }
 
         /* Responsive */
-        /* ========================================================
+        /* Top bar shown on all non-home sections */
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.6rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .top-bar button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            transition: background 0.15s;
+        }
+        .top-bar button:hover {
+            background: #f1f5f9;
+        }
+
+                /* ========================================================
            MOBILE RESPONSIVE — Comprehensive Fix
            Covers: nav, hero, tables, code blocks, stage grids,
            tips grids, modules, assessments, fonts, spacing
@@ -1031,15 +1060,6 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <button onclick="switchTab('home')" class="active">🏠 Home</button>
-        <button onclick="switchTab('teachers-guide')">🎓 Teacher's Guide</button>
-        <button onclick="switchTab('age-8')" class="nav-tab" data-age="8">🎨 Age 8</button>
-        <button onclick="switchTab('age-10')" class="nav-tab" data-age="10">🐢 Age 10</button>
-        <button onclick="switchTab('age-13')">📚 Age 13</button>
-        <button onclick="switchTab('age-14')">🔧 Age 14</button>
-        <button onclick="switchTab('age-15')">🚀 Age 15</button>
-    </nav>
 
     <!-- HOME SUMMARY PAGE -->
     <div id="home" class="content-section active">
@@ -1169,6 +1189,11 @@
 
     <!-- Teacher's Guide Section -->
     <div id="teachers-guide" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🎓 Teacher's Guide</span>
+        </div>
         <div class="container">
             <h1>🎓 Teacher's Guide</h1>
 
@@ -1425,6 +1450,11 @@
     <!-- Age 13 Section -->
     <!-- AGE 8 SECTION -->
     <div id="age-8" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🎨 Age 8 — Visual Play</span>
+        </div>
         <div class="container">
             <h1>🎨 Age 8: Visual Play to First Apps</h1>
 
@@ -1723,6 +1753,11 @@ t.color(<span class="string">"purple"</span>)
 
     <!-- AGE 10 SECTION -->
     <div id="age-10" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🐢 Age 10 — First Python</span>
+        </div>
         <div class="container">
             <h1>🐢 Age 10: Real Python — Faster Track</h1>
 
@@ -2053,6 +2088,11 @@ guess = <span class="function">int</span>(<span class="function">input</span>(<s
 
     
     <div id="age-13" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">📚 Age 13 — Discovery Year</span>
+        </div>
         <div class="container">
             <h1>📚 Age 13: Beginner Level (No Coding Required)</h1>
 
@@ -2543,6 +2583,11 @@ guess = <span class="function">int</span>(<span class="function">input</span>(<s
 
     <!-- Age 14 Section -->
     <div id="age-14" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🔧 Age 14 — Builder Year</span>
+        </div>
         <div class="container">
             <h1>🔧 Age 14: Intermediate Level (Python Introduced)</h1>
 
@@ -3134,6 +3179,11 @@ model.fit(X, y)
 
     <!-- Age 15 Section -->
     <div id="age-15" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🚀 Age 15 — Research Year</span>
+        </div>
         <div class="container">
             <h1>🚀 Age 15: Advanced Level (Deep Learning)</h1>
 
