@@ -1670,7 +1670,21 @@
                 <span>🔐 Your Credentials</span>
                 <button class="lock-btn" onclick="vaultLock()">🔒 Lock</button>
             </div>
+            <!-- Search bar -->
+            <div style="position:relative; margin-bottom:1rem;">
+                <span style="position:absolute; left:0.85rem; top:50%; transform:translateY(-50%); font-size:0.95rem; pointer-events:none;">🔍</span>
+                <input
+                    type="text"
+                    id="vault-search"
+                    placeholder="Search credentials…"
+                    oninput="filterCreds(this.value)"
+                    style="width:100%; padding:0.65rem 0.85rem 0.65rem 2.4rem; border:2px solid #e2e8f0; border-radius:10px; font-size:0.88rem; outline:none; box-sizing:border-box; font-family:inherit; transition:border-color 0.2s;"
+                    onfocus="this.style.borderColor='#4f46e5'"
+                    onblur="this.style.borderColor='#e2e8f0'"
+                />
+            </div>
             <div id="cred-list"></div>
+            <div id="no-results" style="display:none;text-align:center;color:#9ca3af;font-size:0.85rem;padding:1rem 0;">No credentials match your search</div>
             <button class="add-cred-btn" onclick="showAddCred()">+ Add Credential</button>
         </div>
 
@@ -5013,16 +5027,45 @@ reviews = [
             }
         }
 
+        let allCreds = []; // cached for search filtering
+
         async function showVaultContents() {
             document.getElementById('vault-setup').style.display    = 'none';
             document.getElementById('vault-unlock').style.display   = 'none';
             document.getElementById('vault-add-form').style.display = 'none';
             document.getElementById('vault-contents').style.display = 'block';
-            const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
-            renderCreds(creds);
+            // Clear search when opening
+            const searchEl = document.getElementById('vault-search');
+            if (searchEl) searchEl.value = '';
+            document.getElementById('no-results').style.display = 'none';
+            allCreds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
+            renderCreds(allCreds);
         }
 
-        function renderCreds(creds) {
+        function filterCreds(query) {
+            const q = query.toLowerCase().trim();
+            if (!q) {
+                renderCreds(allCreds);
+                document.getElementById('no-results').style.display = 'none';
+                return;
+            }
+            const filtered = allCreds.filter(c =>
+                (c.name  || '').toLowerCase().includes(q) ||
+                (c.type  || '').toLowerCase().includes(q) ||
+                (c.user  || '').toLowerCase().includes(q) ||
+                (c.url   || '').toLowerCase().includes(q) ||
+                (c.notes || '').toLowerCase().includes(q)
+            );
+            if (filtered.length === 0) {
+                document.getElementById('cred-list').innerHTML = '';
+                document.getElementById('no-results').style.display = 'block';
+            } else {
+                document.getElementById('no-results').style.display = 'none';
+                renderCreds(filtered);
+            }
+        }
+
+                function renderCreds(creds) {
             const list = document.getElementById('cred-list');
             if (!creds.length) {
                 list.innerHTML = '<p style="color:#9ca3af;font-size:0.85rem;text-align:center;padding:1rem 0;">No credentials yet — add one below</p>';
