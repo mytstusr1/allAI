@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <title>AI & ML for Kids 🤖 — Complete Teaching Curriculum</title>
     <style>
         * {
@@ -497,7 +498,61 @@
         }
 
         /* Responsive */
-        /* Name entry splash screen */
+        /* Auth0 Authentication */
+        #auth-overlay {
+            position: fixed; inset: 0; z-index: 99999;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 60%, #1e1b4b 100%);
+            display: flex; align-items: center; justify-content: center;
+            padding: 1.5rem;
+            transition: opacity 0.4s ease;
+        }
+        #auth-overlay.fade-out { opacity: 0; pointer-events: none; }
+
+        .auth-card {
+            background: white; border-radius: 22px;
+            padding: 2.5rem 2rem; width: 100%; max-width: 400px;
+            text-align: center;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
+            animation: splash-in 0.4s ease;
+        }
+        .auth-logo { font-size: 3rem; margin-bottom: 0.75rem; display: block; }
+        .auth-card h2 { font-size: 1.5rem; font-weight: 800; color: #1e293b; margin-bottom: 0.4rem; }
+        .auth-card p  { font-size: 0.9rem; color: #6b7280; margin-bottom: 1.75rem; line-height: 1.5; }
+        .auth-sign-in-btn {
+            width: 100%; padding: 0.9rem;
+            background: linear-gradient(135deg, #1e293b, #4f46e5);
+            color: white; border: none; border-radius: 12px;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+        }
+        .auth-sign-in-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.4); }
+        .auth-checking {
+            color: #9ca3af; font-size: 0.85rem; margin-top: 1rem;
+        }
+
+        /* User bar — top right when logged in */
+        #user-bar {
+            display: none;
+            position: fixed; top: 0.6rem; right: 1rem;
+            z-index: 1000;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            padding: 0.35rem 0.75rem 0.35rem 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            align-items: center; gap: 0.5rem;
+        }
+        #user-bar img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+        #user-bar .user-name { font-size: 0.78rem; font-weight: 600; color: #374151; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        #user-bar .signout-btn {
+            background: none; border: 1px solid #e2e8f0; border-radius: 20px;
+            padding: 0.2rem 0.55rem; font-size: 0.72rem; color: #6b7280;
+            cursor: pointer; transition: all 0.15s;
+        }
+        #user-bar .signout-btn:hover { background: #fef2f2; color: #ef4444; border-color: #fca5a5; }
+
+                /* Name entry splash screen */
         #splash-overlay {
             position: fixed;
             inset: 0;
@@ -1561,6 +1616,31 @@
     </style>
 </head>
 <body>
+
+    <!-- Auth0 Authentication Gate -->
+    <div id="auth-overlay">
+        <div class="auth-card" id="auth-card-login" style="display:none;">
+            <span class="auth-logo">🔒</span>
+            <h2>Sign In to Continue</h2>
+            <p>This site is private. Please sign in with your account to access the AI & ML curriculum.</p>
+            <button class="auth-sign-in-btn" onclick="auth0Login()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Sign In with Auth0
+            </button>
+        </div>
+        <div class="auth-card" id="auth-card-loading">
+            <span class="auth-logo">⏳</span>
+            <h2>Checking access…</h2>
+            <p class="auth-checking">Verifying your authentication</p>
+        </div>
+    </div>
+
+    <!-- User bar (shown after login) -->
+    <div id="user-bar">
+        <img id="user-avatar" src="" alt="" />
+        <span class="user-name" id="user-name-display"></span>
+        <button class="signout-btn" onclick="auth0Logout()">Sign out</button>
+    </div>
 
     <!-- Name Entry Splash Screen -->
     <div id="splash-overlay">
@@ -4659,7 +4739,83 @@ reviews = [
 
     <script>
         // Tab Switching
-        // Splash name entry
+        // ─── Auth0 Authentication ────────────────────────────────────────────
+        const AUTH0_DOMAIN    = 'dev-yhmpa7ah63ecdok3.us.auth0.com';
+        const AUTH0_CLIENT_ID = 'F2IG2Zj95RZBeS2ofQ5ovlHAKmqw56SB';
+        const AUTH0_REDIRECT  = 'https://mytstusr1.github.io/allAI/';
+
+        let auth0Client = null;
+
+        async function initAuth0() {
+            try {
+                auth0Client = await auth0.createAuth0Client({
+                    domain: AUTH0_DOMAIN,
+                    clientId: AUTH0_CLIENT_ID,
+                    authorizationParams: { redirect_uri: AUTH0_REDIRECT }
+                });
+
+                // Handle the redirect callback after login
+                if (window.location.search.includes('code=') && window.location.search.includes('state=')) {
+                    await auth0Client.handleRedirectCallback();
+                    window.history.replaceState({}, document.title, AUTH0_REDIRECT);
+                }
+
+                const isAuthenticated = await auth0Client.isAuthenticated();
+
+                if (isAuthenticated) {
+                    const user = await auth0Client.getUser();
+                    showAuthedContent(user);
+                } else {
+                    showLoginScreen();
+                }
+            } catch (err) {
+                console.error('Auth0 init error:', err);
+                showLoginScreen();
+            }
+        }
+
+        async function auth0Login() {
+            await auth0Client.loginWithRedirect({
+                authorizationParams: { redirect_uri: AUTH0_REDIRECT }
+            });
+        }
+
+        async function auth0Logout() {
+            await auth0Client.logout({
+                logoutParams: { returnTo: AUTH0_REDIRECT }
+            });
+        }
+
+        function showAuthedContent(user) {
+            // Fade out and remove auth overlay
+            const overlay = document.getElementById('auth-overlay');
+            overlay.classList.add('fade-out');
+            setTimeout(() => { overlay.style.display = 'none'; }, 400);
+
+            // Show user bar
+            const bar = document.getElementById('user-bar');
+            document.getElementById('user-avatar').src  = user.picture || '';
+            document.getElementById('user-name-display').textContent = user.given_name || user.name || user.email;
+            bar.style.display = 'flex';
+
+            // If name splash was never set, pre-fill with Auth0 name
+            const savedName = localStorage.getItem('teacherName');
+            if (!savedName && (user.given_name || user.name)) {
+                const name = user.given_name || user.name.split(' ')[0];
+                localStorage.setItem('teacherName', name);
+                applyName(name);
+            }
+        }
+
+        function showLoginScreen() {
+            document.getElementById('auth-card-loading').style.display = 'none';
+            document.getElementById('auth-card-login').style.display   = 'block';
+        }
+
+        // Boot Auth0 immediately
+        window.addEventListener('load', initAuth0);
+
+                // Splash name entry
         function startJourney() {
             const input = document.getElementById('name-input');
             const name = input.value.trim();
