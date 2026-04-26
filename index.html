@@ -578,6 +578,101 @@
         }
         .splash-btn:active { transform: translateY(0); }
 
+                /* Credentials Vault */
+        #vault-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9990;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        #vault-overlay.show { display: flex; }
+
+        .vault-modal {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+            animation: splash-in 0.3s ease;
+        }
+        .vault-modal h2 { font-size: 1.3rem; margin-bottom: 0.4rem; color: #1e293b; }
+        .vault-modal p  { font-size: 0.85rem; color: #6b7280; margin-bottom: 1.25rem; }
+        .vault-input {
+            width: 100%; padding: 0.8rem 1rem; font-size: 0.95rem;
+            border: 2px solid #e2e8f0; border-radius: 10px; outline: none;
+            box-sizing: border-box; margin-bottom: 0.75rem; font-family: inherit;
+            transition: border-color 0.2s;
+        }
+        .vault-input:focus { border-color: #4f46e5; }
+        .vault-btn {
+            width: 100%; padding: 0.85rem; background: linear-gradient(135deg,#1e293b,#4f46e5);
+            color: white; border: none; border-radius: 10px; font-size: 0.95rem;
+            font-weight: 700; cursor: pointer; transition: opacity 0.15s;
+        }
+        .vault-btn:hover { opacity: 0.9; }
+        .vault-btn-danger {
+            background: linear-gradient(135deg,#ef4444,#dc2626);
+        }
+        .vault-error { color: #ef4444; font-size: 0.82rem; margin-top: 0.4rem; display: none; }
+
+        /* Credentials list */
+        .cred-card {
+            background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;
+            padding: 1rem 1.1rem; margin-bottom: 0.75rem;
+            display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;
+        }
+        .cred-name  { font-weight: 700; font-size: 0.9rem; color: #1e293b; }
+        .cred-user  { font-size: 0.8rem; color: #6b7280; margin-top: 0.15rem; }
+        .cred-value {
+            font-size: 0.8rem; color: #374151; margin-top: 0.3rem;
+            font-family: monospace; word-break: break-all;
+            background: #f1f5f9; border-radius: 6px; padding: 0.3rem 0.5rem;
+            cursor: pointer; user-select: all;
+        }
+        .cred-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
+        .cred-btn {
+            background: none; border: 1px solid #e2e8f0; border-radius: 8px;
+            padding: 0.3rem 0.6rem; font-size: 0.75rem; cursor: pointer;
+            color: #64748b; transition: all 0.15s;
+        }
+        .cred-btn:hover { background: #f1f5f9; }
+        .cred-btn.delete:hover { background: #fef2f2; color: #ef4444; border-color: #fca5a5; }
+
+        .vault-lock-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1.5rem; padding: 0.75rem 1rem;
+            background: linear-gradient(135deg,#1e293b,#334155);
+            border-radius: 12px; color: white;
+        }
+        .vault-lock-bar span { font-size: 0.9rem; font-weight: 600; }
+        .lock-btn {
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            color: white; border-radius: 8px; padding: 0.35rem 0.8rem;
+            font-size: 0.8rem; cursor: pointer; transition: background 0.15s;
+        }
+        .lock-btn:hover { background: rgba(255,255,255,0.25); }
+
+        .add-cred-btn {
+            width: 100%; padding: 0.7rem; background: none;
+            border: 2px dashed #cbd5e1; border-radius: 10px;
+            color: #64748b; font-size: 0.88rem; cursor: pointer;
+            margin-top: 0.5rem; transition: all 0.15s;
+        }
+        .add-cred-btn:hover { border-color: #4f46e5; color: #4f46e5; background: #f5f3ff; }
+
+        .copy-toast {
+            position: fixed; bottom: 5rem; left: 50%; transform: translateX(-50%);
+            background: #1e293b; color: white; padding: 0.5rem 1.25rem;
+            border-radius: 20px; font-size: 0.82rem; z-index: 9999;
+            opacity: 0; transition: opacity 0.2s; pointer-events: none;
+        }
+        .copy-toast.show { opacity: 1; }
+
                 /* Home summary cards */
         .summary-card {
             background: white;
@@ -1657,6 +1752,28 @@
                             <span class="tag" style="background:#eff6ff;color:#1e40af;">LLMs & RAG</span>
                         </div>
                         <button class="summary-cta" style="color:#4f46e5;" onclick="switchTab('ai-ml-plan')">View Plan →</button>
+                    </div>
+                </div>
+
+                <!-- Credentials Vault -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#1e293b,#4f46e5);" onclick="toggleCard(this)">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🔐</span>
+                            <div>
+                                <div class="summary-title">My Credentials</div>
+                                <div class="summary-subtitle">Private vault — password protected</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron">▼</span>
+                    </div>
+                    <div class="summary-body">
+                        <p>Securely store API keys, tokens and passwords. AES-256 encrypted — only you can unlock it.</p>
+                        <div class="summary-tags">
+                            <span class="tag" style="background:#f5f3ff;color:#5b21b6;">AES-256</span>
+                            <span class="tag" style="background:#f5f3ff;color:#5b21b6;">Password Protected</span>
+                        </div>
+                        <button class="summary-cta" style="color:#4f46e5;" onclick="openVault(); event.stopPropagation();">Open Vault →</button>
                     </div>
                 </div>
 
@@ -4604,7 +4721,193 @@ reviews = [
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Back to Top Button
+        // ─── AES-256-GCM Credentials Vault ─────────────────────────────────
+        const VAULT_KEY = 'vault_encrypted_v1';
+        const VAULT_SALT_KEY = 'vault_salt_v1';
+        let vaultKey = null;
+
+        async function deriveKey(password, salt) {
+            const enc = new TextEncoder();
+            const keyMaterial = await crypto.subtle.importKey(
+                'raw', enc.encode(password), { name: 'PBKDF2' }, false, ['deriveKey']
+            );
+            return crypto.subtle.deriveKey(
+                { name: 'PBKDF2', salt, iterations: 310000, hash: 'SHA-256' },
+                keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']
+            );
+        }
+
+        async function encryptData(key, data) {
+            const iv = crypto.getRandomValues(new Uint8Array(12));
+            const enc = new TextEncoder();
+            const cipher = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(JSON.stringify(data)));
+            const buf = new Uint8Array(iv.byteLength + cipher.byteLength);
+            buf.set(iv, 0); buf.set(new Uint8Array(cipher), iv.byteLength);
+            return btoa(String.fromCharCode(...buf));
+        }
+
+        async function decryptData(key, b64) {
+            const buf = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+            const iv = buf.slice(0, 12);
+            const data = buf.slice(12);
+            const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, data);
+            return JSON.parse(new TextDecoder().decode(plain));
+        }
+
+        function getOrCreateSalt() {
+            let s = localStorage.getItem(VAULT_SALT_KEY);
+            if (!s) {
+                s = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16))));
+                localStorage.setItem(VAULT_SALT_KEY, s);
+            }
+            return Uint8Array.from(atob(s), c => c.charCodeAt(0));
+        }
+
+        function openVault() {
+            document.getElementById('vault-overlay').classList.add('show');
+            const hasVault = !!localStorage.getItem(VAULT_KEY);
+            document.getElementById('vault-setup').style.display    = hasVault ? 'none'  : 'block';
+            document.getElementById('vault-unlock').style.display   = hasVault ? 'block' : 'none';
+            document.getElementById('vault-contents').style.display = 'none';
+            document.getElementById('vault-add-form').style.display = 'none';
+            if (!hasVault) setTimeout(() => document.getElementById('vault-pw-new').focus(), 200);
+            else           setTimeout(() => document.getElementById('vault-pw-input').focus(), 200);
+        }
+
+        async function vaultSetup() {
+            const pw  = document.getElementById('vault-pw-new').value;
+            const pw2 = document.getElementById('vault-pw-confirm').value;
+            const err = document.getElementById('vault-setup-error');
+            if (!pw || pw !== pw2) { err.style.display = 'block'; return; }
+            err.style.display = 'none';
+            const salt = getOrCreateSalt();
+            vaultKey = await deriveKey(pw, salt);
+            const enc = await encryptData(vaultKey, []);
+            localStorage.setItem(VAULT_KEY, enc);
+            showVaultContents();
+        }
+
+        async function vaultUnlock() {
+            const pw  = document.getElementById('vault-pw-input').value;
+            const err = document.getElementById('vault-unlock-error');
+            try {
+                const salt = getOrCreateSalt();
+                const key  = await deriveKey(pw, salt);
+                await decryptData(key, localStorage.getItem(VAULT_KEY)); // test
+                vaultKey = key;
+                document.getElementById('vault-pw-input').value = '';
+                showVaultContents();
+            } catch {
+                err.style.display = 'block';
+                document.getElementById('vault-pw-input').value = '';
+                document.getElementById('vault-pw-input').focus();
+            }
+        }
+
+        async function showVaultContents() {
+            document.getElementById('vault-setup').style.display    = 'none';
+            document.getElementById('vault-unlock').style.display   = 'none';
+            document.getElementById('vault-add-form').style.display = 'none';
+            document.getElementById('vault-contents').style.display = 'block';
+            const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
+            renderCreds(creds);
+        }
+
+        function renderCreds(creds) {
+            const list = document.getElementById('cred-list');
+            if (!creds.length) {
+                list.innerHTML = '<p style="color:#9ca3af;font-size:0.85rem;text-align:center;padding:1rem 0;">No credentials yet — add one below</p>';
+                return;
+            }
+            list.innerHTML = creds.map((c, i) => `
+                <div class="cred-card">
+                    <div style="flex:1;min-width:0;">
+                        <div class="cred-name">${escHtml(c.name)}</div>
+                        ${c.user ? `<div class="cred-user">${escHtml(c.user)}</div>` : ''}
+                        <div class="cred-value" onclick="copyToClipboard('${escAttr(c.val)}')" title="Click to copy">${escHtml(c.val)}</div>
+                        ${c.url   ? `<div style="font-size:0.75rem;margin-top:0.25rem;"><a href="${escAttr(c.url)}" target="_blank" style="color:#4f46e5;">${escHtml(c.url)}</a></div>` : ''}
+                        ${c.notes ? `<div style="font-size:0.75rem;color:#9ca3af;margin-top:0.2rem;">${escHtml(c.notes)}</div>` : ''}
+                    </div>
+                    <div class="cred-actions">
+                        <button class="cred-btn" onclick="editCred(${i})">✏️</button>
+                        <button class="cred-btn delete" onclick="deleteCred(${i})">🗑️</button>
+                    </div>
+                </div>`).join('');
+        }
+
+        function escHtml(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+        function escAttr(s) { return (s||'').replace(/"/g,'&quot;'); }
+
+        function showAddCred() {
+            document.getElementById('vault-contents').style.display = 'none';
+            document.getElementById('vault-add-form').style.display = 'block';
+            document.getElementById('add-form-title').textContent = '➕ Add Credential';
+            ['cred-name','cred-user','cred-val','cred-url','cred-notes'].forEach(id => document.getElementById(id).value = '');
+            document.getElementById('cred-edit-idx').value = '-1';
+            setTimeout(() => document.getElementById('cred-name').focus(), 100);
+        }
+
+        async function editCred(idx) {
+            const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
+            const c = creds[idx];
+            document.getElementById('vault-contents').style.display = 'none';
+            document.getElementById('vault-add-form').style.display = 'block';
+            document.getElementById('add-form-title').textContent = '✏️ Edit Credential';
+            document.getElementById('cred-name').value  = c.name  || '';
+            document.getElementById('cred-user').value  = c.user  || '';
+            document.getElementById('cred-val').value   = c.val   || '';
+            document.getElementById('cred-url').value   = c.url   || '';
+            document.getElementById('cred-notes').value = c.notes || '';
+            document.getElementById('cred-edit-idx').value = idx;
+        }
+
+        async function saveCred() {
+            const name  = document.getElementById('cred-name').value.trim();
+            const val   = document.getElementById('cred-val').value.trim();
+            if (!name || !val) { alert('Name and value are required'); return; }
+            const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
+            const entry = {
+                name,
+                user:  document.getElementById('cred-user').value.trim(),
+                val,
+                url:   document.getElementById('cred-url').value.trim(),
+                notes: document.getElementById('cred-notes').value.trim()
+            };
+            const idx = parseInt(document.getElementById('cred-edit-idx').value);
+            if (idx >= 0) creds[idx] = entry; else creds.push(entry);
+            const enc = await encryptData(vaultKey, creds);
+            localStorage.setItem(VAULT_KEY, enc);
+            showVaultContents();
+        }
+
+        async function deleteCred(idx) {
+            if (!confirm('Delete this credential?')) return;
+            const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
+            creds.splice(idx, 1);
+            const enc = await encryptData(vaultKey, creds);
+            localStorage.setItem(VAULT_KEY, enc);
+            showVaultContents();
+        }
+
+        function vaultLock() {
+            vaultKey = null;
+            document.getElementById('vault-overlay').classList.remove('show');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const t = document.getElementById('copy-toast');
+                t.classList.add('show');
+                setTimeout(() => t.classList.remove('show'), 1800);
+            });
+        }
+
+        // Close vault on background click
+        document.getElementById('vault-overlay').addEventListener('click', function(e) {
+            if (e.target === this) vaultLock();
+        });
+
+                // Back to Top Button
         const backToTopBtn = document.getElementById('backToTopBtn');
 
         window.addEventListener('scroll', () => {
