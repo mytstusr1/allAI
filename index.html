@@ -160,6 +160,10 @@
             border-bottom-color: var(--color-15-to);
         }
 
+        .nav-tab.active[data-age="guide"] {
+            border-bottom-color: #10b981;
+        }
+
         /* ===== MAIN CONTENT ===== */
         main {
             max-width: 1400px;
@@ -780,6 +784,7 @@
             <button class="hero-btn" onclick="scrollToSection('age-13')">Age 13</button>
             <button class="hero-btn" onclick="scrollToSection('age-14')">Age 14</button>
             <button class="hero-btn" onclick="scrollToSection('age-15')">Age 15</button>
+            <button class="hero-btn" style="background:rgba(16,185,129,0.25);border-color:#10b981;" onclick="scrollToSection('teachers-guide')">🎓 Teacher's Guide</button>
         </div>
     </header>
 
@@ -788,6 +793,7 @@
         <button class="nav-tab active" data-age="13" onclick="switchTab('age-13')">📚 Age 13 — Discovery</button>
         <button class="nav-tab" data-age="14" onclick="switchTab('age-14')">🔧 Age 14 — Building</button>
         <button class="nav-tab" data-age="15" onclick="switchTab('age-15')">🚀 Age 15 — Research</button>
+        <button class="nav-tab" data-age="guide" onclick="switchTab('teachers-guide')">🎓 Teacher's Guide</button>
     </nav>
 
     <main>
@@ -1889,6 +1895,248 @@ reviews = [
         </section>
 
         <!-- ===== 3-YEAR JOURNEY ===== -->
+
+        <!-- TEACHER'S GUIDE SECTION -->
+        <section class="section" id="teachers-guide" style="display:none;">
+            <div class="section-header" style="background: linear-gradient(135deg,#059669,#10b981);">
+                <div class="age-badge" style="background:rgba(255,255,255,0.2);">🎓 Starting Guide</div>
+                <h2 class="section-title">Teaching AI & ML to Kids</h2>
+                <p class="section-subtitle">A complete starting guide for teachers — no technical background needed</p>
+                <div class="section-stats">
+                    <div class="stat"><span class="stat-number">5</span><span class="stat-label">Big Ideas</span></div>
+                    <div class="stat"><span class="stat-number">3</span><span class="stat-label">Age Groups</span></div>
+                    <div class="stat"><span class="stat-number">100%</span><span class="stat-label">Free Tools</span></div>
+                    <div class="stat"><span class="stat-number">0</span><span class="stat-label">Coding Needed</span></div>
+                </div>
+            </div>
+
+            <div class="section-content" style="padding:2.5rem; max-width:1100px; margin:0 auto;">
+
+                <!-- Intro -->
+                <div class="highlight-box" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0); border-left:4px solid #10b981; padding:1.5rem; border-radius:12px; margin-bottom:2.5rem;">
+                    <h3 style="color:#065f46; margin:0 0 0.5rem;">💡 Good News for Teachers!</h3>
+                    <p style="color:#047857; margin:0; font-size:1.05rem;">You <strong>don't need to be a technical expert</strong> to teach AI/ML to kids. You just need to stay a few steps ahead, and there are amazing resources built exactly for this. Here's your complete roadmap.</p>
+                </div>
+
+                <!-- Step 1: Learn the Basics -->
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#10b981; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">1</span>
+                        Learn the Basics Yourself First
+                    </h3>
+                    <p style="color:#6b7280; margin-bottom:1rem;">Start here — these require <strong>zero math or coding background</strong>:</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead style="background:linear-gradient(135deg,#059669,#10b981);">
+                                <tr><th>Resource</th><th>What it is</th><th>Link</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Google's "How AI Works"</strong></td><td>Visual, beginner-friendly intro</td><td><a href="https://ai.google/education" target="_blank" style="color:#10b981;">ai.google/education</a></td></tr>
+                                <tr><td><strong>Elements of AI</strong></td><td>Free online course, no math needed</td><td><a href="https://www.elementsofai.com" target="_blank" style="color:#10b981;">elementsofai.com</a></td></tr>
+                                <tr><td><strong>AI4K12 Initiative</strong></td><td>Made specifically for K-12 <em>teachers</em></td><td><a href="https://ai4k12.org" target="_blank" style="color:#10b981;">ai4k12.org</a></td></tr>
+                                <tr><td><strong>"AI for Everyone" by Andrew Ng</strong></td><td>Plain-English overview</td><td><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" style="color:#10b981;">Coursera (free to audit)</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="margin-top:0.75rem; color:#6b7280; font-size:0.9rem;">🎯 <strong>Goal:</strong> Understand the <em>big ideas</em> — what is AI, how does machine learning work, what are its limits and ethical concerns.</p>
+                </div>
+
+                <!-- Step 2: 5 Big Ideas -->
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#10b981; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">2</span>
+                        Learn the 5 Big Ideas of AI — Your Curriculum Framework
+                    </h3>
+                    <p style="color:#6b7280; margin-bottom:1.25rem;">The <strong>AI4K12 initiative</strong> (the gold standard for K-12 AI education) organises everything around <strong>5 Big Ideas</strong>:</p>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem;">
+                        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:1.1rem; text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">🤖</div>
+                            <strong style="color:#065f46;">Perception</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.3rem 0 0;">How computers sense the world (images, speech, text)</p>
+                        </div>
+                        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:1.1rem; text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">🔁</div>
+                            <strong style="color:#065f46;">Representation & Reasoning</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.3rem 0 0;">How AI stores and uses knowledge</p>
+                        </div>
+                        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:1.1rem; text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">📚</div>
+                            <strong style="color:#065f46;">Learning</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.3rem 0 0;">How machines learn from data — the heart of ML!</p>
+                        </div>
+                        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:1.1rem; text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">🤝</div>
+                            <strong style="color:#065f46;">Natural Interaction</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.3rem 0 0;">How humans and AI communicate</p>
+                        </div>
+                        <div style="background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:1.1rem; text-align:center;">
+                            <div style="font-size:2rem; margin-bottom:0.5rem;">⚖️</div>
+                            <strong style="color:#9a3412;">Societal Impact</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.3rem 0 0;">Ethics, bias, and real-world consequences</p>
+                        </div>
+                    </div>
+                    <p style="margin-top:1rem; color:#6b7280; font-size:0.9rem;">These 5 ideas work for <strong>any age group</strong> — just adjust the depth.</p>
+                </div>
+
+                <!-- Step 3: Tools by Age -->
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#10b981; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">3</span>
+                        Pick the Right Tools for Your Students' Age
+                    </h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.25rem;">
+                        <div style="background:white; border:2px solid #667eea; border-radius:12px; padding:1.25rem; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                            <div style="background:linear-gradient(135deg,#667eea,#764ba2); color:white; border-radius:8px; padding:0.4rem 0.8rem; display:inline-block; font-weight:700; margin-bottom:0.75rem;">👶 Ages 5–8</div>
+                            <p style="font-weight:600; color:#374151; margin:0 0 0.5rem;">Unplugged / No screens needed</p>
+                            <ul style="color:#6b7280; font-size:0.9rem; padding-left:1.2rem; margin:0;">
+                                <li>"AI Unplugged" activities — teach AI through games & stories</li>
+                                <li>Teachable Machine — drag photos, train a model in minutes</li>
+                                <li>Sorting games to explain categorisation</li>
+                            </ul>
+                        </div>
+                        <div style="background:white; border:2px solid #f093fb; border-radius:12px; padding:1.25rem; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                            <div style="background:linear-gradient(135deg,#f093fb,#f5576c); color:white; border-radius:8px; padding:0.4rem 0.8rem; display:inline-block; font-weight:700; margin-bottom:0.75rem;">🧒 Ages 9–12</div>
+                            <p style="font-weight:600; color:#374151; margin:0 0 0.5rem;">Visual & block-based</p>
+                            <ul style="color:#6b7280; font-size:0.9rem; padding-left:1.2rem; margin:0;">
+                                <li>Scratch + ML extension — build AI projects visually</li>
+                                <li><a href="https://machinelearningforkids.co.uk" target="_blank" style="color:#f5576c;">Machine Learning for Kids</a> — free, teacher-friendly</li>
+                                <li>LearningML.es — visual ML, no coding needed</li>
+                            </ul>
+                        </div>
+                        <div style="background:white; border:2px solid #4facfe; border-radius:12px; padding:1.25rem; box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+                            <div style="background:linear-gradient(135deg,#4facfe,#00f2fe); color:white; border-radius:8px; padding:0.4rem 0.8rem; display:inline-block; font-weight:700; margin-bottom:0.75rem;">🧑 Ages 13–15</div>
+                            <p style="font-weight:600; color:#374151; margin:0 0 0.5rem;">Intermediate — see the full plans above!</p>
+                            <ul style="color:#6b7280; font-size:0.9rem; padding-left:1.2rem; margin:0;">
+                                <li>Teachable Machine (image/sound/pose models)</li>
+                                <li>MIT App Inventor + AI — build real apps</li>
+                                <li>Python with pandas, scikit-learn, Keras (age 14–15)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Lesson Plans -->
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#10b981; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">4</span>
+                        Find Lesson Plans — Don't Start From Scratch
+                    </h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem;">
+                        <a href="https://ai4k12.org/resources" target="_blank" style="text-decoration:none; background:white; border:1px solid #d1fae5; border-radius:10px; padding:1rem; display:block; transition:transform 0.2s; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+                            <div style="font-size:1.5rem; margin-bottom:0.4rem;">🎓</div>
+                            <strong style="color:#065f46;">AI4K12</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.25rem 0 0;">Free, grade-banded lesson plans</p>
+                        </a>
+                        <a href="https://code.org/ai" target="_blank" style="text-decoration:none; background:white; border:1px solid #d1fae5; border-radius:10px; padding:1rem; display:block; transition:transform 0.2s; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+                            <div style="font-size:1.5rem; margin-bottom:0.4rem;">💻</div>
+                            <strong style="color:#065f46;">Code.org/AI</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.25rem 0 0;">Fun, structured AI modules</p>
+                        </a>
+                        <a href="https://csunplugged.org" target="_blank" style="text-decoration:none; background:white; border:1px solid #d1fae5; border-radius:10px; padding:1rem; display:block; transition:transform 0.2s; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+                            <div style="font-size:1.5rem; margin-bottom:0.4rem;">✋</div>
+                            <strong style="color:#065f46;">CS Unplugged</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.25rem 0 0;">Hands-on, no computers needed</p>
+                        </a>
+                        <a href="https://dayofai.org" target="_blank" style="text-decoration:none; background:white; border:1px solid #d1fae5; border-radius:10px; padding:1rem; display:block; transition:transform 0.2s; box-shadow:0 2px 6px rgba(0,0,0,0.05);">
+                            <div style="font-size:1.5rem; margin-bottom:0.4rem;">🤖</div>
+                            <strong style="color:#065f46;">Day of AI (MIT)</strong>
+                            <p style="font-size:0.85rem; color:#6b7280; margin:0.25rem 0 0;">Full curriculum for middle/high school</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Step 5: Ethics -->
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#f59e0b; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">5</span>
+                        Don't Forget Ethics — It's the Most Important Part
+                    </h3>
+                    <div style="background:linear-gradient(135deg,#fff7ed,#fef3c7); border:1px solid #fcd34d; border-radius:12px; padding:1.5rem; margin-bottom:1rem;">
+                        <p style="color:#92400e; margin:0 0 0.75rem; font-weight:600;">Teaching kids <em>how</em> AI works is only half the job. Teach them to ask:</p>
+                        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:0.75rem;">
+                            <div style="background:white; border-radius:8px; padding:0.75rem; font-size:0.9rem; color:#374151;">🤔 <strong>Who made this AI, and why?</strong></div>
+                            <div style="background:white; border-radius:8px; padding:0.75rem; font-size:0.9rem; color:#374151;">📊 <strong>What data was it trained on? Could it be biased?</strong></div>
+                            <div style="background:white; border-radius:8px; padding:0.75rem; font-size:0.9rem; color:#374151;">👥 <strong>Who could be helped or hurt by this AI?</strong></div>
+                            <div style="background:white; border-radius:8px; padding:0.75rem; font-size:0.9rem; color:#374151;">🔒 <strong>What happens to our privacy?</strong></div>
+                        </div>
+                        <p style="color:#92400e; margin:0.75rem 0 0; font-size:0.9rem;">📚 <strong>Resources:</strong> <a href="https://moralmachine.net" target="_blank" style="color:#d97706;">Moral Machine (MIT)</a>, Day of AI ethics modules, AI4K12's societal impact lessons</p>
+                    </div>
+                </div>
+
+                <!-- Step 6: Week-by-week plan -->
+                <div style="margin-bottom:2.5rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#10b981; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">6</span>
+                        Your Week-by-Week Starting Plan
+                    </h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem;">
+                        <div style="background:white; border-radius:10px; border-left:4px solid #10b981; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+                            <div style="font-weight:700; color:#065f46; margin-bottom:0.25rem;">Weeks 1–2</div>
+                            <p style="color:#6b7280; font-size:0.9rem; margin:0;">Take the <strong>"Elements of AI"</strong> course yourself</p>
+                        </div>
+                        <div style="background:white; border-radius:10px; border-left:4px solid #10b981; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+                            <div style="font-weight:700; color:#065f46; margin-bottom:0.25rem;">Week 3</div>
+                            <p style="color:#6b7280; font-size:0.9rem; margin:0;">Explore <strong>AI4K12</strong> and pick your grade band</p>
+                        </div>
+                        <div style="background:white; border-radius:10px; border-left:4px solid #10b981; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+                            <div style="font-weight:700; color:#065f46; margin-bottom:0.25rem;">Week 4</div>
+                            <p style="color:#6b7280; font-size:0.9rem; margin:0;">Play with <strong>Teachable Machine</strong> &amp; ML for Kids</p>
+                        </div>
+                        <div style="background:white; border-radius:10px; border-left:4px solid #f59e0b; padding:1rem; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+                            <div style="font-weight:700; color:#92400e; margin-bottom:0.25rem;">Week 5 🎉</div>
+                            <p style="color:#6b7280; font-size:0.9rem; margin:0;">Run your <strong>first lesson</strong> with students!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Mindset shifts -->
+                <div style="margin-bottom:2rem;">
+                    <h3 style="font-size:1.4rem; color:#065f46; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                        <span style="background:#10b981; color:white; width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:700;">7</span>
+                        Key Mindset Shifts for Teachers
+                    </h3>
+                    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:1rem;">
+                        <div style="background:#f0fdf4; border-radius:10px; padding:1rem; display:flex; gap:0.75rem; align-items:flex-start;">
+                            <span style="font-size:1.4rem;">✅</span>
+                            <p style="margin:0; color:#374151; font-size:0.95rem;">You don't need to know <em>how</em> to code — focus on <strong>concepts and critical thinking</strong></p>
+                        </div>
+                        <div style="background:#f0fdf4; border-radius:10px; padding:1rem; display:flex; gap:0.75rem; align-items:flex-start;">
+                            <span style="font-size:1.4rem;">✅</span>
+                            <p style="margin:0; color:#374151; font-size:0.95rem;">AI education is as much about <strong>ethics and society</strong> as it is about tech</p>
+                        </div>
+                        <div style="background:#f0fdf4; border-radius:10px; padding:1rem; display:flex; gap:0.75rem; align-items:flex-start;">
+                            <span style="font-size:1.4rem;">✅</span>
+                            <p style="margin:0; color:#374151; font-size:0.95rem;">Kids often learn faster than you — <strong>let them explore and teach you back!</strong></p>
+                        </div>
+                        <div style="background:#f0fdf4; border-radius:10px; padding:1rem; display:flex; gap:0.75rem; align-items:flex-start;">
+                            <span style="font-size:1.4rem;">✅</span>
+                            <p style="margin:0; color:#374151; font-size:0.95rem;">Mistakes and confusion are part of learning — <strong>model curiosity, not expertise</strong></p>
+                        </div>
+                        <div style="background:#f0fdf4; border-radius:10px; padding:1rem; display:flex; gap:0.75rem; align-items:flex-start;">
+                            <span style="font-size:1.4rem;">♿</span>
+                            <p style="margin:0; color:#374151; font-size:0.95rem;">Show how AI helps people — <strong>text-to-speech, captioning, vision tools</strong> are great examples</p>
+                        </div>
+                        <div style="background:#f0fdf4; border-radius:10px; padding:1rem; display:flex; gap:0.75rem; align-items:flex-start;">
+                            <span style="font-size:1.4rem;">🌍</span>
+                            <p style="margin:0; color:#374151; font-size:0.95rem;">AI needs people from <strong>every background</strong> — artists, historians, lawyers, engineers. There's a role for everyone.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div style="background:linear-gradient(135deg,#059669,#10b981); color:white; border-radius:16px; padding:2rem; text-align:center; margin-top:1rem;">
+                    <h3 style="margin:0 0 0.5rem; font-size:1.5rem;">Ready to Start? 🚀</h3>
+                    <p style="margin:0 0 1.25rem; opacity:0.9;">Browse the full teaching plans above — choose your students' age group and follow the week-by-week guide.</p>
+                    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+                        <button onclick="switchTab('age-13')" style="background:rgba(255,255,255,0.2); border:2px solid white; color:white; padding:0.6rem 1.4rem; border-radius:30px; font-size:1rem; cursor:pointer; font-weight:600; transition:background 0.2s;">📚 Age 13 Plan</button>
+                        <button onclick="switchTab('age-14')" style="background:rgba(255,255,255,0.2); border:2px solid white; color:white; padding:0.6rem 1.4rem; border-radius:30px; font-size:1rem; cursor:pointer; font-weight:600; transition:background 0.2s;">🔧 Age 14 Plan</button>
+                        <button onclick="switchTab('age-15')" style="background:rgba(255,255,255,0.2); border:2px solid white; color:white; padding:0.6rem 1.4rem; border-radius:30px; font-size:1rem; cursor:pointer; font-weight:600; transition:background 0.2s;">🚀 Age 15 Plan</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section class="journey-section">
             <h2 style="font-size: 2rem; margin-bottom: 1.5rem; text-align: center;">🚀 The 3-Year Journey</h2>
             <div class="table-wrapper">
@@ -1961,18 +2209,23 @@ reviews = [
         // Tab switching
         function switchTab(ageId) {
             // Hide all sections
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            
-            // Show selected section
-            document.getElementById(ageId).classList.add('active');
-            
-            // Update nav highlighting
-            document.querySelectorAll('.nav-tab').forEach(tab => {
-                tab.classList.remove('active');
+            document.querySelectorAll('.section').forEach(s => {
+                s.classList.remove('active');
+                s.style.display = 'none';
             });
-            document.querySelector(`[data-age="${ageId.split('-')[1]}"]`).classList.add('active');
-            
-            // Smooth scroll to top of section
+
+            // Show selected section
+            const target = document.getElementById(ageId);
+            target.classList.add('active');
+            target.style.display = 'block';
+
+            // Update nav highlighting
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            const ageKey = ageId === 'teachers-guide' ? 'guide' : ageId.split('-')[1];
+            const activeTab = document.querySelector(`[data-age="${ageKey}"]`);
+            if (activeTab) activeTab.classList.add('active');
+
+            // Smooth scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
