@@ -865,6 +865,11 @@
             color: #92400e;
         }
 
+
+        /* Age 8 & Age 10 Tab Colors */
+        .nav-tab.active[data-age="8"] { border-bottom-color: #ff6b6b; }
+        .nav-tab.active[data-age="10"] { border-bottom-color: #11998e; }
+
         .badge-green {
             background: #dcfce7;
             color: #166534;
@@ -875,6 +880,8 @@
     <!-- Navigation -->
     <nav>
         <button onclick="switchTab('teachers-guide')" class="active">🎓 Teacher's Guide</button>
+        <button onclick="switchTab('age-8')" class="nav-tab" data-age="8">🎨 Age 8 — Visual Play</button>
+        <button onclick="switchTab('age-10')" class="nav-tab" data-age="10">🐢 Age 10 — First Python</button>
         <button onclick="switchTab('age-13')">📚 Age 13</button>
         <button onclick="switchTab('age-14')">🔧 Age 14</button>
         <button onclick="switchTab('age-15')">🚀 Age 15</button>
@@ -886,6 +893,8 @@
         <p>A Complete Teaching Curriculum for Ages 13–15 — Built for Every Teacher</p>
         <div class="hero-buttons">
             <button class="btn btn-hero" onclick="switchTab('teachers-guide')">🎓 Teacher's Guide</button>
+            <button class="hero-btn" style="background:rgba(255,107,107,0.25);border-color:#ff6b6b;" onclick="switchTab('age-8')">🎨 Age 8</button>
+            <button class="hero-btn" style="background:rgba(17,153,142,0.25);border-color:#11998e;" onclick="switchTab('age-10')">🐢 Age 10</button>
             <button class="btn btn-hero" onclick="switchTab('age-13')">📚 Age 13</button>
             <button class="btn btn-hero" onclick="switchTab('age-14')">🔧 Age 14</button>
             <button class="btn btn-hero" onclick="switchTab('age-15')">🚀 Age 15</button>
@@ -1148,6 +1157,619 @@
     </div>
 
     <!-- Age 13 Section -->
+    <!-- AGE 8 SECTION -->
+    <div id="age-8" class="content-section" style="display:none;">
+        <div class="container">
+            <h1>🎨 Age 8: Visual Play to First Apps</h1>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Stages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">9+</div>
+                    <div class="stat-label">Months</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Beginner</div>
+                    <div class="stat-label">Level</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Coding Needed</div>
+                </div>
+            </div>
+
+            <!-- Highlight Box -->
+            <div class="box box-yellow">
+                <h3>🌟 What Makes Age 8 Special</h3>
+                <p>At 8, students discover coding through <strong>play and creativity — no text typing yet!</strong> Everything starts visually. They move to Python only after building excitement through games and art. Sessions should be <strong>15–20 minutes max</strong> and always with a parent or teacher present.</p>
+            </div>
+
+            <!-- PDF Download Button -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <a href="Python_Roadmap_Age8.pdf" download style="background: linear-gradient(135deg, #ff6b6b, #ffa500); color: white; padding: 0.75rem 1.5rem; border-radius: 20px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 1rem;">📥 Download PDF Roadmap</a>
+            </div>
+
+            <!-- 4-Stage Roadmap -->
+            <h2 style="margin-top: 2rem;">4-Stage Roadmap</h2>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 10px; padding: 1rem; border-top: 4px solid #2196F3; text-align: center;">
+                    <div style="font-size: 1.5rem;">🎮</div>
+                    <strong style="color: #1565C0;">Stage 1</strong>
+                    <div style="color: #374151; font-weight: 700;">Visual Play</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 1–3</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 10px; padding: 1rem; border-top: 4px solid #4CAF50; text-align: center;">
+                    <div style="font-size: 1.5rem;">🧩</div>
+                    <strong style="color: #1B5E20;">Stage 2</strong>
+                    <div style="color: #374151; font-weight: 700;">Block Coding</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 4–5</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 10px; padding: 1rem; border-top: 4px solid #FF9800; text-align: center;">
+                    <div style="font-size: 1.5rem;">🐢</div>
+                    <strong style="color: #E65100;">Stage 3</strong>
+                    <div style="color: #374151; font-weight: 700;">First Python</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 6–8</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fce4ec, #f8bbd0); border-radius: 10px; padding: 1rem; border-top: 4px solid #E91E63; text-align: center;">
+                    <div style="font-size: 1.5rem;">🚀</div>
+                    <strong style="color: #880E4F;">Stage 4</strong>
+                    <div style="color: #374151; font-weight: 700;">Mini Apps</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 9+</div>
+                </div>
+            </div>
+
+            <!-- Stage 1 -->
+            <div class="module">
+                <div class="module-header green">
+                    <div>🎮 Stage 1 — Visual Play</div>
+                    <div class="module-badge">Month 1–3</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-green">
+                        <strong>🎯 Goal:</strong>
+                        <p>Discover you can make the computer do things — pure excitement, zero frustration.</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resource</th>
+                                <th>What They Do</th>
+                                <th>Why Perfect for Age 8</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Scratch Jr</td>
+                                <td>Tap & drag on tablet</td>
+                                <td>For ages 5–7, great warm-up</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://scratch.mit.edu" target="_blank">Scratch</a></td>
+                                <td>Animate characters, stories</td>
+                                <td>#1 tool for this age worldwide</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://code.org" target="_blank">Code.org — Course B</a></td>
+                                <td>Puzzle-based games</td>
+                                <td>Self-paced, minimal reading</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://lightbot.com" target="_blank">Lightbot</a></td>
+                                <td>Robot puzzle game</td>
+                                <td>Feels like a game, builds logic</td>
+                                <td><span class="badge badge-free">✓ Free*</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="color: #6b7280; font-size: 0.9rem;">* Lightbot: free on browser; ~$2.99 on mobile</p>
+
+                    <div class="info-box">
+                        <strong>💡 Parent Tips:</strong>
+                        <ul style="margin-left: 1.5rem;">
+                            <li>Always code together — they need you present</li>
+                            <li>Let them decorate & name everything</li>
+                            <li>15–20 min sessions max</li>
+                            <li>Follow their interests (animals? art? games?)</li>
+                        </ul>
+                    </div>
+
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Build a simple Scratch animation or story entirely on their own</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="module">
+                <div class="module-header green">
+                    <div>🧩 Stage 2 — Block Coding</div>
+                    <div class="module-badge">Month 4–5</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-green">
+                        <strong>🎯 Goal:</strong>
+                        <p>Introduce real programming concepts using visual blocks — before typing a single line of code.</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resource</th>
+                                <th>What They Learn</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://scratch.mit.edu" target="_blank">Scratch (advanced)</a></td>
+                                <td>Loops, conditionals, events, variables — all visually</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://tynker.com" target="_blank">Tynker — Beginner</a></td>
+                                <td>Structured block-to-code curriculum for kids</td>
+                                <td><span class="badge badge-free">✓ Free*</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://csfirst.withgoogle.com" target="_blank">Google CS First</a></td>
+                                <td>Free guided video projects — great for this age</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Build their own Scratch game with a score counter</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="module">
+                <div class="module-header orange">
+                    <div>🐢 Stage 3 — First Python</div>
+                    <div class="module-badge">Month 6–8</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-orange">
+                        <strong>🎯 Goal:</strong>
+                        <p>Bridge from blocks to real Python. Turtle graphics = instant visual results they love!</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Why It Works for Age 8</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://trinket.io" target="_blank">Trinket.io</a></td>
+                                <td>Python in browser — colourful, no install needed</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://tynker.com" target="_blank">Tynker Python Mode</a></td>
+                                <td>Shows blocks AND Python side-by-side — best pick!</td>
+                                <td><span class="badge badge-free">✓ Free*</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Hello World!" by Carter & Warren</td>
+                                <td>Written for kids — ages 8–12 perfect fit</td>
+                                <td>~$22</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Write a Python program that draws their name or a picture using Turtle graphics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="module">
+                <div class="module-header pink">
+                    <div>🚀 Stage 4 — Mini Apps</div>
+                    <div class="module-badge">Month 9+</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-pink">
+                        <strong>🎯 Goal:</strong>
+                        <p>Build something real they are proud to show their friends!</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Project</th>
+                                <th>Skills Used</th>
+                                <th>Tool</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>🎨 Pattern Art Generator</td>
+                                <td>Turtle, loops, colors</td>
+                                <td>Trinket.io</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td>🎲 Dice Roll Simulator</td>
+                                <td>Random, print, input</td>
+                                <td>Trinket.io</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td>❓ 5-Question Quiz</td>
+                                <td>Lists, if/else, score counter</td>
+                                <td>Trinket.io</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td>📱 MIT App Inventor App</td>
+                                <td>Drag-and-drop real mobile app</td>
+                                <td><a href="https://appinventor.mit.edu" target="_blank">MIT App Inventor</a></td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>📝 Final Assessment:</strong>
+                        <p>Build ONE mini app of their choice and present it — explain what it does and one thing they'd add next</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 100% Free Path -->
+            <div class="box box-green" style="margin-top: 2rem; margin-bottom: 2rem;">
+                <h3>💚 100% Free Learning Path for Age 8</h3>
+                <p>Scratch Jr → Scratch → Code.org Course B → Google CS First → Trinket.io → MIT App Inventor</p>
+                <p style="font-size: 0.9rem; color: #6b7280;">Zero cost for 12+ months of learning — all free tools, no subscription needed to start</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- AGE 10 SECTION -->
+    <div id="age-10" class="content-section" style="display:none;">
+        <div class="container">
+            <h1>🐢 Age 10: Real Python — Faster Track</h1>
+
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Stages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7+</div>
+                    <div class="stat-label">Months</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Intermediate</div>
+                    <div class="stat-label">Level</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Python</div>
+                    <div class="stat-label">Language</div>
+                </div>
+            </div>
+
+            <!-- Highlight Box -->
+            <div class="box box-blue">
+                <h3>⚡ What Makes Age 10 Different</h3>
+                <p>At 10, students move <strong>faster and more independently</strong>. They can jump straight to Scratch (skip Scratch Jr), reach real Python by Month 3, and build actual GUI apps and games. Sessions can be <strong>20–30 minutes</strong> and they can explore more solo.</p>
+            </div>
+
+            <!-- PDF Download Button -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <a href="Python_Roadmap_Age10.pdf" download style="background: linear-gradient(135deg, #11998e, #38ef7d); color: white; padding: 0.75rem 1.5rem; border-radius: 20px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 1rem;">📥 Download PDF Roadmap</a>
+            </div>
+
+            <!-- Age 8 vs 10 Comparison -->
+            <h2>🆚 Age 8 vs Age 10 — Key Differences</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspect</th>
+                        <th>Age 8</th>
+                        <th>Age 10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Attention span</strong></td>
+                        <td>15–20 min sessions</td>
+                        <td>20–30 min sessions</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Start with</strong></td>
+                        <td>Visual/game tools first</td>
+                        <td>Can jump to Scratch faster</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Python timing</strong></td>
+                        <td>Month 6+</td>
+                        <td>Month 3+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parent involvement</strong></td>
+                        <td>Every session — sit together</td>
+                        <td>Can explore more solo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best motivator</strong></td>
+                        <td>Drawing & storytelling</td>
+                        <td>Games & challenges</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- 4-Stage Roadmap -->
+            <h2 style="margin-top: 2rem;">4-Stage Roadmap</h2>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                <div style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 10px; padding: 1rem; border-top: 4px solid #2196F3; text-align: center;">
+                    <div style="font-size: 1.5rem;">🎮</div>
+                    <strong style="color: #1565C0;">Stage 1</strong>
+                    <div style="color: #374151; font-weight: 700;">Fun Basics</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 1–2</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9); border-radius: 10px; padding: 1rem; border-top: 4px solid #4CAF50; text-align: center;">
+                    <div style="font-size: 1.5rem;">🐍</div>
+                    <strong style="color: #1B5E20;">Stage 2</strong>
+                    <div style="color: #374151; font-weight: 700;">Real Python</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 3–4</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border-radius: 10px; padding: 1rem; border-top: 4px solid #FF9800; text-align: center;">
+                    <div style="font-size: 1.5rem;">🖥️</div>
+                    <strong style="color: #E65100;">Stage 3</strong>
+                    <div style="color: #374151; font-weight: 700;">GUI Apps</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 5–6</div>
+                </div>
+                <div style="background: linear-gradient(135deg, #fce4ec, #f8bbd0); border-radius: 10px; padding: 1rem; border-top: 4px solid #E91E63; text-align: center;">
+                    <div style="font-size: 1.5rem;">📱</div>
+                    <strong style="color: #880E4F;">Stage 4</strong>
+                    <div style="color: #374151; font-weight: 700;">Mobile Apps</div>
+                    <div style="color: #6b7280; font-size: 0.85rem;">Month 7+</div>
+                </div>
+            </div>
+
+            <!-- Stage 1 -->
+            <div class="module">
+                <div class="module-header green">
+                    <div>🎮 Stage 1 — Fun Basics</div>
+                    <div class="module-badge">Month 1–2</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-green">
+                        <strong>🎯 Goal:</strong>
+                        <p>Make coding feel like a game, not school. Build logical thinking before syntax.</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Resource</th>
+                                <th>Why It Works</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://scratch.mit.edu" target="_blank">Scratch</a></td>
+                                <td>Drag-and-drop logic, then see Python equivalents</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://code.org" target="_blank">Code.org</a></td>
+                                <td>Free, game-based intro to programming logic</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td>Python with Minecraft (Raspberry Pi)</td>
+                                <td>Code inside a game world — hugely motivating</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td>"Python for Kids" — Jon Stager</td>
+                                <td>Best-rated book for ages 9–12</td>
+                                <td>~$22</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Complete a Scratch project and understand loops & conditionals</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="module">
+                <div class="module-header green">
+                    <div>🐍 Stage 2 — Real Python</div>
+                    <div class="module-badge">Month 3–4</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-green">
+                        <strong>🎯 Goal:</strong>
+                        <p>Write actual Python code with visible, fun results. Make something they can show off!</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Why It Works</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://trinket.io" target="_blank">Trinket.io</a></td>
+                                <td>Python in the browser — no installation needed</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://replit.com" target="_blank">Replit</a></td>
+                                <td>Free, shareable, beginner-friendly online IDE</td>
+                                <td><span class="badge badge-free">✓ Free*</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://tynker.com" target="_blank">Tynker</a></td>
+                                <td>Structured Python curriculum designed for kids</td>
+                                <td><span class="badge badge-free">✓ Free*</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Build a number guessing game with loops and user input</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="module">
+                <div class="module-header orange">
+                    <div>🖥️ Stage 3 — GUI Apps</div>
+                    <div class="module-badge">Month 5–6</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-orange">
+                        <strong>🎯 Goal:</strong>
+                        <p>Build apps with buttons, windows, and visuals — programs that look like real software!</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Best For</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tkinter</td>
+                                <td>Built into Python — easy windows & buttons</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://pygame.org" target="_blank">Pygame</a></td>
+                                <td>Build 2D games — extremely motivating</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td>Turtle Graphics</td>
+                                <td>Draw shapes and art with code</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>🏆 Milestone:</strong>
+                        <p>Build a quiz app with a score counter (buttons + loops + logic)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="module">
+                <div class="module-header pink">
+                    <div>📱 Stage 4 — Mobile Apps</div>
+                    <div class="module-badge">Month 7+</div>
+                </div>
+                <div class="module-content">
+                    <div class="box box-pink">
+                        <strong>🎯 Goal:</strong>
+                        <p>Build something they can show their friends on a real phone!</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>What It Does</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://appinventor.mit.edu" target="_blank">MIT App Inventor</a></td>
+                                <td>Build real Android apps — drag-and-drop</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://kivy.org" target="_blank">Kivy</a></td>
+                                <td>Python framework for cross-platform mobile apps</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://beeware.org" target="_blank">BeeWare</a></td>
+                                <td>Write Python, deploy to iPhone & Android</td>
+                                <td><span class="badge badge-free">✓ Free</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="assessment-box">
+                        <strong>📝 Final Assessment:</strong>
+                        <p>Build and demo a working mobile app — present it to the class with an explanation of the code</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- First 3 Projects -->
+            <h2 style="margin-top: 2rem;">🏗️ First 3 Projects to Build</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>🎮 #1 Number Guessing Game</h3>
+                    <p>Skills: Variables, loops, input, conditionals</p>
+                    <p style="color: #0284c7; font-weight: 500;">Great first project — instant fun!</p>
+                </div>
+                <div class="card">
+                    <h3>🎨 #2 Turtle Art Generator</h3>
+                    <p>Skills: Functions, colors, loops, creativity</p>
+                    <p style="color: #0284c7; font-weight: 500;">Visual results they're proud of!</p>
+                </div>
+                <div class="card">
+                    <h3>❓ #3 Quiz App with Score</h3>
+                    <p>Skills: Lists, conditionals, UI basics</p>
+                    <p style="color: #0284c7; font-weight: 500;">Teaches real app structure</p>
+                </div>
+            </div>
+
+            <!-- 100% Free Path -->
+            <div class="box box-blue" style="margin-top: 2rem; margin-bottom: 2rem;">
+                <h3>💚 100% Free Learning Path for Age 10</h3>
+                <p>Scratch → Code.org → Trinket.io → Pygame → MIT App Inventor</p>
+                <p style="font-size: 0.9rem; color: #6b7280;">Zero cost for 12+ months of learning — all free tools, no subscription needed to start</p>
+            </div>
+        </div>
+    </div>
+
+    
     <div id="age-13" class="content-section">
         <div class="container">
             <h1>📚 Age 13: Beginner Level (No Coding Required)</h1>
