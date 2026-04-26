@@ -1736,171 +1736,25 @@
                 <p style="color:#6b7280; font-size:1.05rem; max-width:640px; margin:0 auto 0.5rem;">Choose a section below to jump straight in. Every plan is completely free and ready to use today.</p>
             </div>
 
-            <!-- Summary Cards -->
-            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; margin-top:2rem;">
+            <!-- Summary Cards — 2 tiles only -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem; margin-top:2rem;">
 
-                <!-- Teacher's Guide -->
+                <!-- All AI tile -->
                 <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#059669,#10b981);" onclick="toggleCard(this)">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#0f172a,#1e3a5f,#0369a1);" onclick="switchTab('all-ai')">
                         <div class="summary-card-left">
-                            <span class="summary-emoji">🎓</span>
+                            <span class="summary-emoji">🤖</span>
                             <div>
-                                <div class="summary-title">Teacher's Starting Guide</div>
-                                <div class="summary-subtitle">No technical background needed</div>
+                                <div class="summary-title">All AI</div>
+                                <div class="summary-subtitle">Teaching plans for Ages 8–15 + Your learning path</div>
                             </div>
                         </div>
-                        <span class="summary-chevron">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>7 steps to get started — the 5 Big Ideas of AI, age-band tools, lesson plans, ethics, and key mindset shifts for teachers.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#f0fdf4;color:#166534;">7 Steps</span>
-                            <span class="tag" style="background:#f0fdf4;color:#166534;">All Ages</span>
-                        </div>
-                        <button class="summary-cta" style="color:#059669;" onclick="switchTab('teachers-guide')">View Guide →</button>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
                     </div>
                 </div>
 
-                <!-- Age 8 -->
-                <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#ff6b6b,#ffa500);" onclick="toggleCard(this)">
-                        <div class="summary-card-left">
-                            <span class="summary-emoji">🎨</span>
-                            <div>
-                                <div class="summary-title">Age 8 — Visual Play</div>
-                                <div class="summary-subtitle">Scratch to first Python apps</div>
-                            </div>
-                        </div>
-                        <span class="summary-chevron">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>4 stages over 9+ months. Starts with Scratch Jr and visual games, builds up to Turtle graphics and mini Python apps — all free.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#fff5f5;color:#b91c1c;">4 Stages</span>
-                            <span class="tag" style="background:#fff5f5;color:#b91c1c;">9+ Months</span>
-                            <span class="tag" style="background:#fff5f5;color:#b91c1c;">Beginner</span>
-                        </div>
-                        <button class="summary-cta" style="color:#ff6b6b;" onclick="switchTab('age-8')">View Roadmap →</button>
-                    </div>
-                </div>
-
-                <!-- Age 10 -->
-                <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#11998e,#38ef7d);" onclick="toggleCard(this)">
-                        <div class="summary-card-left">
-                            <span class="summary-emoji">🐢</span>
-                            <div>
-                                <div class="summary-title">Age 10 — First Python</div>
-                                <div class="summary-subtitle">Real Python, GUI apps &amp; mobile</div>
-                            </div>
-                        </div>
-                        <span class="summary-chevron">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>4 stages over 7+ months. A faster track than Age 8 — reaches Python by Month 3, builds Pygame games and real mobile apps.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#f0fff4;color:#065f46;">4 Stages</span>
-                            <span class="tag" style="background:#f0fff4;color:#065f46;">7+ Months</span>
-                            <span class="tag" style="background:#f0fff4;color:#065f46;">Python</span>
-                        </div>
-                        <button class="summary-cta" style="color:#11998e;" onclick="switchTab('age-10')">View Roadmap →</button>
-                    </div>
-                </div>
-
-                <!-- Age 13 -->
-                <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#667eea,#764ba2);" onclick="toggleCard(this)">
-                        <div class="summary-card-left">
-                            <span class="summary-emoji">📚</span>
-                            <div>
-                                <div class="summary-title">Age 13 — Discovery Year</div>
-                                <div class="summary-subtitle">AI fundamentals, no coding required</div>
-                            </div>
-                        </div>
-                        <span class="summary-chevron">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>6 modules over 12 weeks. Covers AI concepts, how machines learn, computer vision, ethics, and a first hands-on AI project — all without coding.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#f5f3ff;color:#5b21b6;">6 Modules</span>
-                            <span class="tag" style="background:#f5f3ff;color:#5b21b6;">12 Weeks</span>
-                            <span class="tag" style="background:#f5f3ff;color:#5b21b6;">No Coding</span>
-                        </div>
-                        <button class="summary-cta" style="color:#667eea;" onclick="switchTab('age-13')">View Curriculum →</button>
-                    </div>
-                </div>
-
-                <!-- Age 14 -->
-                <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#f093fb,#f5576c);" onclick="toggleCard(this)">
-                        <div class="summary-card-left">
-                            <span class="summary-emoji">🔧</span>
-                            <div>
-                                <div class="summary-title">Age 14 — Builder Year</div>
-                                <div class="summary-subtitle">Python, ML algorithms &amp; capstone</div>
-                            </div>
-                        </div>
-                        <span class="summary-chevron">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>7 modules over 14 weeks. Real Python code, scikit-learn classifiers, neural networks, advanced ethics, and a self-directed capstone project.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#fdf4ff;color:#7e22ce;">7 Modules</span>
-                            <span class="tag" style="background:#fdf4ff;color:#7e22ce;">14 Weeks</span>
-                            <span class="tag" style="background:#fdf4ff;color:#7e22ce;">Python</span>
-                        </div>
-                        <button class="summary-cta" style="color:#f093fb;" onclick="switchTab('age-14')">View Curriculum →</button>
-                    </div>
-                </div>
-
-                <!-- Age 15 -->
-                <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#4facfe,#00f2fe);" onclick="toggleCard(this)">
-                        <div class="summary-card-left">
-                            <span class="summary-emoji">🚀</span>
-                            <div>
-                                <div class="summary-title" style="color:#1e293b;">Age 15 — Research Year</div>
-                                <div class="summary-subtitle" style="color:rgba(30,41,59,0.7);">Deep learning, NLP, GenAI &amp; research</div>
-                            </div>
-                        </div>
-                        <span class="summary-chevron" style="color:#1e293b;">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>7 modules over 16 weeks. Keras neural networks, HuggingFace NLP, Generative AI &amp; LLMs, AI governance, and an independent research paper.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#eff6ff;color:#1e40af;">7 Modules</span>
-                            <span class="tag" style="background:#eff6ff;color:#1e40af;">16 Weeks</span>
-                            <span class="tag" style="background:#eff6ff;color:#1e40af;">Deep Learning</span>
-                        </div>
-                        <button class="summary-cta" style="color:#4facfe;" onclick="switchTab('age-15')">View Curriculum →</button>
-                    </div>
-                </div>
-
-                <!-- AI/ML Learning Plan -->
-                <div class="summary-card">
-                    <div class="summary-card-header" style="background:linear-gradient(135deg,#1e293b,#4f46e5);" onclick="toggleCard(this)">
-                        <div class="summary-card-left">
-                            <span class="summary-emoji">🗺️</span>
-                            <div>
-                                <div class="summary-title">My AI/ML Learning Plan</div>
-                                <div class="summary-subtitle">15 weeks · 1 hour daily · LLM apps</div>
-                            </div>
-                        </div>
-                        <span class="summary-chevron">▼</span>
-                    </div>
-                    <div class="summary-body">
-                        <p>Your personal roadmap from Python basics to building and deploying real LLM-powered apps — in 4 phases over 15 weeks.</p>
-                        <div class="summary-tags">
-                            <span class="tag" style="background:#eff6ff;color:#1e40af;">4 Phases</span>
-                            <span class="tag" style="background:#eff6ff;color:#1e40af;">15 Weeks</span>
-                            <span class="tag" style="background:#eff6ff;color:#1e40af;">LLMs & RAG</span>
-                        </div>
-                        <button class="summary-cta" style="color:#4f46e5;" onclick="switchTab('ai-ml-plan')">View Plan →</button>
-                    </div>
-                </div>
-
-                <!-- Credentials Vault -->
-                <div class="summary-card">
+                <!-- Credentials tile — owner only -->
+                <div class="summary-card" id="credentials-tile" style="display:none;">
                     <div class="summary-card-header" style="background:linear-gradient(135deg,#1e293b,#4f46e5);" onclick="toggleCard(this)">
                         <div class="summary-card-left">
                             <span class="summary-emoji">🔐</span>
@@ -1927,10 +1781,127 @@
         </div>
     </div><!-- end home section -->
 
+    <!-- ALL AI SECTION -->
+    <div id="all-ai" class="content-section">
+        <div class="top-bar">
+            <button onclick="switchTab('home')">← Back to Home</button>
+            <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
+            <span style="color:#6b7280; font-size:0.85rem;">🤖 All AI</span>
+        </div>
+        <div class="container">
+            <div style="text-align:center; padding:1.5rem 0 0.5rem;">
+                <h1 style="font-size:2rem; margin-bottom:0.5rem;">🤖 All AI</h1>
+                <p style="color:#6b7280; font-size:0.95rem; max-width:580px; margin:0 auto;">Browse all teaching plans, roadmaps and your personal learning path. Click any card to open it.</p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.25rem; margin-top:2rem;">
+
+                <!-- Teacher's Guide -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#059669,#10b981);" onclick="switchTab('teachers-guide')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🎓</span>
+                            <div>
+                                <div class="summary-title">Teacher's Starting Guide</div>
+                                <div class="summary-subtitle">No technical background needed</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+                <!-- Age 8 -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#ff6b6b,#ffa500);" onclick="switchTab('age-8')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🎨</span>
+                            <div>
+                                <div class="summary-title">Age 8 — Visual Play</div>
+                                <div class="summary-subtitle">Scratch to first Python · 9+ months</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+                <!-- Age 10 -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#11998e,#38ef7d);" onclick="switchTab('age-10')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🐢</span>
+                            <div>
+                                <div class="summary-title">Age 10 — First Python</div>
+                                <div class="summary-subtitle">Real Python, GUI apps · 7+ months</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+                <!-- Age 13 -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#667eea,#764ba2);" onclick="switchTab('age-13')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">📚</span>
+                            <div>
+                                <div class="summary-title">Age 13 — Discovery Year</div>
+                                <div class="summary-subtitle">AI fundamentals · 12 weeks</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+                <!-- Age 14 -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#f093fb,#f5576c);" onclick="switchTab('age-14')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🔧</span>
+                            <div>
+                                <div class="summary-title">Age 14 — Builder Year</div>
+                                <div class="summary-subtitle">Python & ML algorithms · 14 weeks</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+                <!-- Age 15 -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#4facfe,#00f2fe);" onclick="switchTab('age-15')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🚀</span>
+                            <div>
+                                <div class="summary-title" style="color:#1e293b;">Age 15 — Research Year</div>
+                                <div class="summary-subtitle" style="color:rgba(30,41,59,0.75);">Deep learning & research · 16 weeks</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="color:#1e293b;transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+                <!-- AI/ML Learning Plan -->
+                <div class="summary-card">
+                    <div class="summary-card-header" style="background:linear-gradient(135deg,#1e293b,#4f46e5);" onclick="switchTab('ai-ml-plan')">
+                        <div class="summary-card-left">
+                            <span class="summary-emoji">🗺️</span>
+                            <div>
+                                <div class="summary-title">My AI/ML Learning Plan</div>
+                                <div class="summary-subtitle">15 weeks · LLM apps · Personal roadmap</div>
+                            </div>
+                        </div>
+                        <span class="summary-chevron" style="transform:rotate(-90deg);">▼</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- end all-ai section -->
+
     <!-- AI/ML LEARNING PLAN SECTION -->
     <div id="ai-ml-plan" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">🗺️ My AI/ML Learning Plan</span>
         </div>
@@ -2101,7 +2072,7 @@
     <!-- Teacher's Guide Section -->
     <div id="teachers-guide" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">🎓 Teacher's Guide</span>
         </div>
@@ -2342,7 +2313,7 @@
     <!-- AGE 8 SECTION -->
     <div id="age-8" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">🎨 Age 8 — Visual Play</span>
         </div>
@@ -2625,7 +2596,7 @@ t.color(<span class="string">"purple"</span>)
     <!-- AGE 10 SECTION -->
     <div id="age-10" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">🐢 Age 10 — First Python</span>
         </div>
@@ -2940,7 +2911,7 @@ guess = <span class="function">int</span>(<span class="function">input</span>(<s
     
     <div id="age-13" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">📚 Age 13 — Discovery Year</span>
         </div>
@@ -3415,7 +3386,7 @@ guess = <span class="function">int</span>(<span class="function">input</span>(<s
     <!-- Age 14 Section -->
     <div id="age-14" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">🔧 Age 14 — Builder Year</span>
         </div>
@@ -3991,7 +3962,7 @@ model.fit(X, y)
     <!-- Age 15 Section -->
     <div id="age-15" class="content-section">
         <div class="top-bar">
-            <button onclick="switchTab('home')">← Back to Home</button>
+            <button onclick="switchTab('all-ai')">← All AI</button>
             <span style="color:#9ca3af; margin:0 0.5rem;">|</span>
             <span style="color:#6b7280; font-size:0.85rem;">🚀 Age 15 — Research Year</span>
         </div>
@@ -4866,6 +4837,12 @@ reviews = [
             document.getElementById('user-avatar').src  = user.picture || '';
             document.getElementById('user-name-display').textContent = user.given_name || user.name || user.email;
             bar.style.display = 'flex';
+
+            // Show credentials tile only to the vault owner
+            const credTile = document.getElementById('credentials-tile');
+            if (credTile && loggedInEmail === VAULT_OWNER.toLowerCase()) {
+                credTile.style.display = 'block';
+            }
 
             // If name splash was never set, pre-fill with Auth0 name
             const savedName = localStorage.getItem('teacherName');
