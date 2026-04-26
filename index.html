@@ -1687,6 +1687,7 @@
             </div>
             <div id="cred-list"></div>
             <div id="no-results" style="display:none;text-align:center;color:#9ca3af;font-size:0.85rem;padding:1rem 0;">No credentials match your search</div>
+            <div id="vault-pagination"></div>
         </div>
 
         <!-- Add/Edit form -->
@@ -5040,13 +5041,17 @@ reviews = [
             if (searchEl) searchEl.value = '';
             document.getElementById('no-results').style.display = 'none';
             allCreds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
-            renderCreds(allCreds);
+            currentPage = 1;
+            renderCreds(allCreds, 1);
+            renderPagination(allCreds);
         }
 
         function filterCreds(query) {
             const q = query.toLowerCase().trim();
             if (!q) {
-                renderCreds(allCreds);
+                currentPage = 1;
+                renderCreds(allCreds, 1);
+                renderPagination(allCreds);
                 document.getElementById('no-results').style.display = 'none';
                 return;
             }
@@ -5062,16 +5067,29 @@ reviews = [
                 document.getElementById('no-results').style.display = 'block';
             } else {
                 document.getElementById('no-results').style.display = 'none';
-                renderCreds(filtered);
+                currentPage = 1;
+                renderCreds(filtered, 1);
+                renderPagination(filtered);
             }
         }
 
-                function renderCreds(creds) {
+                const PAGE_SIZE = 10;
+        let currentPage = 1;
+
+        function renderCreds(creds, page) {
             const list = document.getElementById('cred-list');
+            currentPage = page || currentPage;
             if (!creds.length) {
                 list.innerHTML = '<p style="color:#9ca3af;font-size:0.85rem;text-align:center;padding:1.25rem 0;">No credentials yet — click &ldquo;+ Add Credential&rdquo; above</p>';
+                document.getElementById('vault-pagination').innerHTML = '';
                 return;
             }
+            const totalPages = Math.ceil(creds.length / PAGE_SIZE);
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const pageCreds = creds.slice(start, start + PAGE_SIZE);
+            // Store paged creds reference for index mapping back to allCreds
+            window._pagedIndexMap = pageCreds.map(c => creds.indexOf(c));
             list.innerHTML = `
                 <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
                     <thead>
@@ -5084,7 +5102,7 @@ reviews = [
                         </tr>
                     </thead>
                     <tbody>
-                        ${creds.map((c, i) => `
+                        ${pageCreds.map((c, i) => { const realIdx = window._pagedIndexMap[i]; return `
                         <tr style="border-bottom:1px solid #f3f4f6;" onmouseover="this.style.background='#f9fafb'" onmouseout="this.style.background=''">
                             <td style="padding:0.6rem 0.75rem;font-weight:600;color:#1e293b;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escAttr(c.name)}">${escHtml(c.name)}</td>
                             <td style="padding:0.6rem 0.75rem;">
@@ -5099,15 +5117,68 @@ reviews = [
                                 </div>
                             </td>
                             <td style="padding:0.6rem 0.5rem;text-align:center;white-space:nowrap;">
-                                <button class="cred-btn" onclick="editCred(${i})" style="padding:0.25rem 0.5rem;font-size:0.75rem;" title="Edit">✏️</button>
-                                <button class="cred-btn delete" onclick="deleteCred(${i})" style="padding:0.25rem 0.5rem;font-size:0.75rem;" title="Delete">🗑️</button>
+                                <button class="cred-btn" onclick="editCred(${realIdx})" style="padding:0.25rem 0.5rem;font-size:0.75rem;" title="Edit">✏️</button>
+                                <button class="cred-btn delete" onclick="deleteCred(${realIdx})" style="padding:0.25rem 0.5rem;font-size:0.75rem;" title="Delete">🗑️</button>
                             </td>
-                        </tr>`).join('')}
+                        </tr>`; }).join('')}
                     </tbody>
                 </table>`;
         }
 
-        let visibleVals = {};
+        // Render pagination controls
+        function renderPagination(creds) {
+            const pg = document.getElementById('vault-pagination');
+            if (!pg) return;
+            const totalPages = Math.ceil(creds.length / PAGE_SIZE);
+            if (totalPages <= 1) { pg.innerHTML = ''; return; }
+            const pages = [];
+            for (let p = 1; p <= totalPages; p++) {
+                const isActive = p === currentPage;
+                pages.push(`<button onclick="goToPage(${p})" style="
+                    padding:0.3rem 0.65rem; border-radius:8px; font-size:0.78rem; font-weight:600; cursor:pointer;
+                    border: 1.5px solid ${isActive ? '#4f46e5' : '#e2e8f0'};
+                    background: ${isActive ? '#4f46e5' : 'white'};
+                    color: ${isActive ? 'white' : '#374151'};
+                    transition: all 0.15s;
+                ">${p}</button>`);
+            }
+            pg.innerHTML = `
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid #f3f4f6;">
+                    <span style="font-size:0.75rem;color:#9ca3af;">
+                        Showing ${((currentPage-1)*PAGE_SIZE)+1}–${Math.min(currentPage*PAGE_SIZE, creds.length)} of ${creds.length}
+                    </span>
+                    <div style="display:flex;gap:0.35rem;align-items:center;">
+                        <button onclick="goToPage(${currentPage-1})" ${currentPage===1?'disabled':''} style="
+                            padding:0.3rem 0.65rem; border-radius:8px; font-size:0.78rem; cursor:pointer;
+                            border:1.5px solid #e2e8f0; background:white; color:${currentPage===1?'#d1d5db':'#374151'};
+                        ">‹</button>
+                        ${pages.join('')}
+                        <button onclick="goToPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''} style="
+                            padding:0.3rem 0.65rem; border-radius:8px; font-size:0.78rem; cursor:pointer;
+                            border:1.5px solid #e2e8f0; background:white; color:${currentPage===totalPages?'#d1d5db':'#374151'};
+                        ">›</button>
+                    </div>
+                </div>`;
+        }
+
+        function goToPage(p) {
+            const creds = document.getElementById('vault-search').value.trim()
+                ? allCreds.filter(c =>
+                    (c.name||'').toLowerCase().includes(document.getElementById('vault-search').value.toLowerCase()) ||
+                    (c.type||'').toLowerCase().includes(document.getElementById('vault-search').value.toLowerCase()) ||
+                    (c.user||'').toLowerCase().includes(document.getElementById('vault-search').value.toLowerCase()) ||
+                    (c.url||'').toLowerCase().includes(document.getElementById('vault-search').value.toLowerCase()) ||
+                    (c.notes||'').toLowerCase().includes(document.getElementById('vault-search').value.toLowerCase()))
+                : allCreds;
+            const total = Math.ceil(creds.length / PAGE_SIZE);
+            if (p < 1 || p > total) return;
+            currentPage = p;
+            visibleVals = {};
+            renderCreds(creds, p);
+            renderPagination(creds);
+        }
+
+                let visibleVals = {};
         function toggleVal(idx, val) {
             const el = document.getElementById('val-' + idx);
             if (!el) return;
@@ -5171,7 +5242,7 @@ reviews = [
         }
 
         async function deleteCred(idx) {
-            if (!confirm('Delete this credential?')) return;
+            if (!confirm('Delete "' + (allCreds[idx] ? allCreds[idx].name : 'this credential') + '"?\n\nThis cannot be undone.')) return;
             const creds = await decryptData(vaultKey, localStorage.getItem(VAULT_KEY));
             creds.splice(idx, 1);
             const enc = await encryptData(vaultKey, creds);
